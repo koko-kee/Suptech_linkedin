@@ -22,8 +22,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->foreignIdFor(\App\Models\Entreprise::class)->nullable();
+            $table->foreignIdFor(\App\Models\Niveau::class)->nullable();
+            $table->foreignIdFor(\App\Models\Localite::class)->nullable();
             $table->timestamps();
-            
+
         });
     }
 

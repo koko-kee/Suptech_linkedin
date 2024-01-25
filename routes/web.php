@@ -15,11 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-    Role::create([
-        'name' => 'admin',
-        'description' => "Mon super admin"
-    ]);
-
-    return view('welcome');
+    return view('dashboard');
 });
