@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
 
            StatutsSeeder::class,
            EntrepriseSeeder::class,
-           LocaliteSeeder::class
+           LocaliteSeeder::class,
+           NiveauSeeder::class
        ]);
     }
 }

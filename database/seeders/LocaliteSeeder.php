@@ -15,7 +15,7 @@ class LocaliteSeeder extends Seeder
         $senegalLocalites = ['Dakar', 'Thiès', 'Kaolack', 'Ziguinchor', 'Saint-Louis', 'Kédougou'];
 
         foreach ($senegalLocalites as $localite) {
-            Localite::create([
+            \App\Models\Localite::create([
                 'name' => $localite,
             ]);
         }

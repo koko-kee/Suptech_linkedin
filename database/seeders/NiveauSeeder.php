@@ -16,7 +16,7 @@ class NiveauSeeder extends Seeder
         $niveauEtude = ['Primaire', 'Collège', 'Lycée', 'Université', 'Doctorat'];
 
         foreach ($niveauEtude as $niveau) {
-            Niveau::create([
+            \App\Models\Niveau::create([
                 'name' => $niveau,
             ]);
         }
