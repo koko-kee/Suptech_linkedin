@@ -25,5 +25,8 @@ class StatutsSeeder extends Seeder
             'name' => 'SA',
         ]);
 
+
+
+
     }
 }
