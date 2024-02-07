@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('candidats/profile/profil');
+    return view('auth.login');
 });
