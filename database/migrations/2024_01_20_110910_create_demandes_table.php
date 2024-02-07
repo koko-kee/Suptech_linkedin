@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('demandes', function (Blueprint $table){
             $table->id();
-            $table->foreignIdFor(\App\Models\Entreprise::class);
+            $table->foreignIdFor(\App\Models\Offre::class);
             $table->foreignIdFor(\App\Models\User::class);
+            $table->text('cv');
             $table->timestamps();
-
         });
     }
 
