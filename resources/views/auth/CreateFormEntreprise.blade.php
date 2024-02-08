@@ -8,31 +8,31 @@
             class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
             <div class="d-flex align-items-center justify-content-center w-100">
                 <div class="row justify-content-center w-100">
-                    <div class="col-md-8 col-lg-6 col-xxl-3">
+                    <div class="col-md-8 col-lg-6 col-xxl-5">
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="../assets/images/logos/dark-logo.svg" width="180" alt="">
                                 </a>
-                                <p class="text-center text-uppercase">Connexion</p>
+                                <p class="text-center text-uppercase">Creer une entreprise</p>
                                 <form>
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nom Entreprise</label>
                                         <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp">
                                     </div>
                                     <div class="mb-4">
-<<<<<<< HEAD
-                                        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
-                                    </div>
-                                    <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</a>
-                                
-=======
                                         <label for="logo" class="form-label">Logo</label>
                                         <input type="file" name="logo" class="form-control" id="logo" name="logo">
                                     </div>
-                                    <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Enregistrer</a>
->>>>>>> 95dd4e164c2c741a45374c0184e96de918dcf933
+                                    <div class="mb-3">
+                                        <label for="disabledSelect" class="form-label">Statuts Juridique</label>
+                                        <select name="statut_id" id="disabledSelect" class="form-select">
+                                            @foreach($status as $statut)
+                                                <option value="{{$statut->id}}">{{$statut->libelle}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <a href="# class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Enregistrer</a>
                                 </form>
                             </div>
                         </div>
