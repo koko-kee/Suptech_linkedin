@@ -14,14 +14,14 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Home</span>
+                    <span class="hide-menu">Acceuil</span>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="./index.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                        <span class="hide-menu">Mon Profil</span>
+                        <span class="hide-menu">Offres</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
