@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FormRequestCompany;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Entreprise;
-use http\Client\Curl\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
@@ -29,6 +30,7 @@ class RegisterController extends Controller
   public function store(RegisterRequest$request)
   {
       $credentials = $request->validated();
+      $credentials['role_id'] = 1;
       $password = Hash::make($credentials['password']);
       $credentials['password'] = $password;
       $user = User::create($credentials);
