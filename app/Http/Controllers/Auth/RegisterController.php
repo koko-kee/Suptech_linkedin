@@ -37,7 +37,7 @@ class RegisterController extends Controller
           return redirect()->route('login');
       }else{
           Session::put('user',$user);
-          return  redirect()->route('');
+          return  redirect()->route('register.formcompany');
       }
 
   }
