@@ -18,18 +18,14 @@
                                 <form>
 
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Adresse Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <label for="name" class="form-label">Nom Entreprise</label>
+                                        <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
+                                        <label for="logo" class="form-label">Logo</label>
+                                        <input type="file" name="logo" class="form-control" id="logo" name="logo">
                                     </div>
-                                    <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</a>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
-                                        <a class="text-primary fw-bold ms-2" href="{{route('welcome')}}">Sign In</a>
-                                    </div>
+                                    <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Enregistrer</a>
                                 </form>
                             </div>
                         </div>
