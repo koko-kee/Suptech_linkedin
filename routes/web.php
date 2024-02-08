@@ -21,13 +21,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('auth.login');
-});
+})->name('login');
 
-Route::group(function (){
+Route::get('/welcomeRegister',[RegisterController::class,'typeRegister'])->name('welcome');
+Route::get('/register/{id}',[RegisterController::class,'registerForm'])->name('register');
+Route::post('/register',[RegisterController::class,'store'])->name('register.store');
+Route::get('/registerEntreprise',[RegisterController::class,'FormCompany'])->name('register.formcompany');
 
-    Route::get('/welcomeRegister','typeRegister')->name('type');
-    Route::get('/register','typeRegister')->name('store');
 
-})->controller(RegisterController::class)->name('register.');
+
 
 

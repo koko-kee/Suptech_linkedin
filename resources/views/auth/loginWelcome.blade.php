@@ -16,10 +16,10 @@ data-sidebar-position="fixed" data-header-position="fixed">
             </a>
             <p class="text-center text-capitalize fw-bold">Qui etes vous?</p>
             <div class="row">
-                <a href="{{route('')}}" class="btn btn-info fw-bold mb-4">Candidat</a>
-                <a href="{{route('')}}" class="btn btn-primary fw-bold mb-4">Entreprise</a>
+                <a href="{{route('register',['id'=> 1])}}" class="btn btn-info fw-bold mb-4">Candidat</a>
+                <a href="{{route('register',['id'=> 2])}}" class="btn btn-primary fw-bold mb-4">Entreprise</a>
             </div>
-           
+
           </div>
         </div>
       </div>
