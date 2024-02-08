@@ -19,7 +19,6 @@ return new class extends Migration
             $table->boolean('isCompany')->default(false);
             $table->foreignIdFor(\App\Models\Statut::class);
             $table->timestamps();
-
         });
     }
 
