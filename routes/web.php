@@ -24,10 +24,10 @@ Route::get('/', function () {
 
 Route::group(function (){
 
-    Route::get('/welcomeRegister','typeRegister')->name('register_type');
-    Route::get('/register','typeRegister')->name('register');
+    Route::get('/welcomeRegister','typeRegister')->name('type');
+    Route::get('/register','typeRegister')->name('store');
 
-})->controller(RegisterController::class);
+})->controller(RegisterController::class)->name('register.');
 
 
 
