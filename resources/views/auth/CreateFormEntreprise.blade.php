@@ -22,18 +22,10 @@
                                         <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp">
                                     </div>
                                     <div class="mb-4">
-<<<<<<< HEAD
-                                        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
-                                    </div>
-                                    <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</a>
-                                
-=======
                                         <label for="logo" class="form-label">Logo</label>
                                         <input type="file" name="logo" class="form-control" id="logo" name="logo">
                                     </div>
                                     <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Enregistrer</a>
->>>>>>> 95dd4e164c2c741a45374c0184e96de918dcf933
                                 </form>
                             </div>
                         </div>
