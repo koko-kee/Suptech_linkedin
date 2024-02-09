@@ -12,14 +12,14 @@ use App\Providers\RouteServiceProvider;
 
 class AuthenticateSessionController extends Controller
 {
-    /**
+     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('auth.login'); 
+        return view('auth.login');
     }
-    
+
     /**
      * Store a newly created resource in storage.
      */
@@ -32,13 +32,16 @@ class AuthenticateSessionController extends Controller
                 'email' => 'L\'authentification a échoué'
             ]);
         }
-    
         $request->session()->regenerate();
-    
-        
-        return redirect()->route('login');
+        if(Auth::user()->ManyRoles()){
+           session::put('current_role','AdminEntreprise');
+        }
+        return redirect()->route('roles.index');
     }
-    
+
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -48,6 +51,7 @@ class AuthenticateSessionController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        Session::flush();
         return redirect('/');
     }
 }

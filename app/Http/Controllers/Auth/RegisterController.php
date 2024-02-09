@@ -29,7 +29,7 @@ class RegisterController extends Controller
       return View('Auth.register');
   }
 
-  public function store(RegisterRequest$request)
+  public function store(RegisterRequest $request)
   {
       $credentials = $request->validated();
       $credentials['password'] = Hash::make($credentials['password']);
