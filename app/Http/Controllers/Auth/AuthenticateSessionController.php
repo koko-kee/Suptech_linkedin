@@ -7,6 +7,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session; // Ajoutez cette ligne pour importer la classe Session
+use Illuminate\Validation\ValidationException; // Ajoutez cette ligne pour importer la classe ValidationException
 use App\Providers\RouteServiceProvider;
 
 class AuthenticateSessionController extends Controller
@@ -24,16 +25,18 @@ class AuthenticateSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        $credentials = $request->validated();
+
+        if (!Auth::attempt($credentials)) {
+            throw ValidationException::withMessages([
+                'email' => 'L\'authentification a échoué'
+            ]);
+        }
+    
         $request->session()->regenerate();
     
-        $typeRegister = Session::get('type');
-    
-        if ($typeRegister == 1) {
-            return redirect(route('home'));
-        } else {
-            return redirect(route('register'));
-        }
+        
+        return redirect()->route('login');
     }
     
 
