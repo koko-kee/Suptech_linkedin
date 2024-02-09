@@ -54,4 +54,6 @@ class ForgetController extends Controller{
             return redirect()->back()->with('success', 'Un e-mail de réinitialisation de mot de passe a été envoyé.');
     }
 
+
+    
 }
