@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FormRequestCompany;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Entreprise;
+use App\Models\Role;
 use App\Models\Statut;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,32 +34,45 @@ class RegisterController extends Controller
       $credentials = $request->validated();
       $credentials['password'] = Hash::make($credentials['password']);
       $user = User::create($credentials);
+
       if(Session::get('type') == 1)
       {
+          $user->roles()->attach([
+              Role::select('id')->where('name','candidat')->value('id')
+          ]);
           return redirect()->route('login');
       }
       else
       {
           Session::put('user',$user);
-          return  View('auth.createFormEntreprise',[
-              "status" => Statut::all()
-          ]);
+          return redirect()->route('FormCreateCompany');
       }
   }
 
-
-  public function  createCompany(FormRequestCompany $request)
+  public function FormCreateCompany()
   {
-      $data = $request->validated();
-      $imagePath = $request->validated('logo')->store("logoEntreprise","public");
-      $data['logo'] = $imagePath;
-      $entreprise = Entreprise::create($data);
-      $user = User::find(Session::get('user')->id);
-      $user->entreprise_id = $entreprise->id;
-      $user->update();
-      return redirect()->route('Auth.login');
+      return  View('auth.createFormEntreprise',[
+          "status" => Statut::all()
+      ]);
   }
 
+    public function createCompany(FormRequestCompany $request)
+    {
+        $data = $request->validated();
+        if ($request->hasFile('logo')) {
+            $data['logo'] = $request->file('logo')->store("logoEntreprise", "public");
+        }
+        $entreprise = Entreprise::create($data);
+        $user = User::find(Session::get('user')->id);
 
+        $user->roles()->attach([
+            Role::select('id')->where('name','candidat')->value('id'),
+            Role::select('id')->where('name','AdminEntreprise')->value('id'),
+        ]);
+        $user->entreprise_id = $entreprise->id;
+        $user->save();
+        session()->forget(['type', 'user']);
+        return redirect()->route('Auth.login');
+    }
 
 }

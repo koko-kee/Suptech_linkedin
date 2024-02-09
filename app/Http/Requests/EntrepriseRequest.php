@@ -23,7 +23,8 @@ class EntrepriseRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'logo' => ['required','image'],
+            'email' => ['required','email','unique:entreprises'],
+            'logo' => ['image'],
             'satut_id' => ['required','integer','exists:statuts,id']
         ];
     }

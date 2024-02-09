@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::get('/welcomeRegister',[RegisterController::class,'typeRegister'])->name('welcome');
 Route::get('/register/{id}',[RegisterController::class,'registerForm'])->name('register');
 Route::post('/register',[RegisterController::class,'store'])->name('register.store');
-
-
+Route::get('/createCompany',[RegisterController::class,'FormCreateCompany'])->name('FormCreateCompany');
+Route::post('/createCompany',[RegisterController::class,'createCompany'])->name('createCompany');
 
 
