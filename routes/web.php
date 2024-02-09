@@ -29,8 +29,8 @@ Route::get('/register/{id}',[RegisterController::class,'registerForm'])->name('r
 Route::post('/register',[RegisterController::class,'store'])->name('register.store');
 Route::get('/registerEntreprise',[RegisterController::class,'FormCompany'])->name('register.formcompany');
 
-Route::get('/resetPassword',[ForgetController::class,'FormForget'])->name('forget');
-
+Route::get('/forgetPassword',[ForgetController::class,'FormForget'])->name('forget');
+Route::post('/resetPassword',[ForgetController::class,'Reset'])->name('reset');
 
 
 

@@ -16,7 +16,7 @@ data-sidebar-position="fixed" data-header-position="fixed">
             </a>
 
             <p class="text-center text-uppercase fw-bold">Reinitialisation mot de passe</p>
-            <form action="{{route('register.store')}}" method="post">
+            <form action="{{route('reset')}}" method="post">
                 @csrf
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Adresse Email</label>
