@@ -27,6 +27,7 @@ Route::get('/welcomeRegister',[RegisterController::class,'typeRegister'])->name(
 Route::get('/register/{id}',[RegisterController::class,'registerForm'])->name('register');
 Route::post('/register',[RegisterController::class,'store'])->name('register.store');
 Route::get('/registerEntreprise',[RegisterController::class,'FormCompany'])->name('register.formcompany');
+Route::get('/roles',[RoleController::class,'create'])->name('roles.crete');
 
 
 
