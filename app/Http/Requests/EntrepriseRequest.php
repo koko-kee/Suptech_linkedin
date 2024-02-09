@@ -22,11 +22,9 @@ class EntrepriseRequest extends FormRequest
     public function rules(): array
     {
         return [
-
             'name' => ['required'],
             'logo' => ['required','image'],
             'satut_id' => ['required','integer','exists:statuts,id']
-
         ];
     }
 }
