@@ -24,7 +24,7 @@ class FormRequestCompany extends FormRequest
         return [
             'name' => ['required'],
             'email' => ['required','email','unique:entreprises'],
-            'logo' => ['image'],
+            'logo' => ['image','nullable'],
             'statut_id' => ['required','integer','exists:statuts,id']
         ];
     }

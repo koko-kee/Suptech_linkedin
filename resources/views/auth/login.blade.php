@@ -9,6 +9,11 @@ data-sidebar-position="fixed" data-header-position="fixed">
   <div class="d-flex align-items-center justify-content-center w-100">
     <div class="row justify-content-center w-100">
       <div class="col-md-8 col-lg-6 col-xxl-3">
+          @if(session('success'))
+              <div class="alert alert-success" role="alert">
+                  {{session('success')}}
+              </div>
+          @endif
         <div class="card mb-0">
           <div class="card-body">
             <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">

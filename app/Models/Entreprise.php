@@ -10,9 +10,11 @@ class Entreprise extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function statut() : belongsTo
     {
-        
+
         return $this->belongsTo(Statut::class);
     }
 

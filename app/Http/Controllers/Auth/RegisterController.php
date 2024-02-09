@@ -40,7 +40,7 @@ class RegisterController extends Controller
           $user->roles()->attach([
               Role::select('id')->where('name','candidat')->value('id')
           ]);
-          return redirect()->route('login');
+          return redirect()->route('login')->with('success','votre compte a ete creer');
       }
       else
       {
@@ -72,7 +72,7 @@ class RegisterController extends Controller
         $user->entreprise_id = $entreprise->id;
         $user->save();
         session()->forget(['type', 'user']);
-        return redirect()->route('Auth.login');
+        return redirect()->route('login')->with('success','votre compte a ete creer');
     }
 
 }
