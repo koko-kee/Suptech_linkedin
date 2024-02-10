@@ -30,7 +30,16 @@ class ProfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'logo' => 'required',
+            'nom' => 'required'
+            ]);
+
+        $entreprise  = new Entreprise();
+        $entreprise->logo = $request->input('logo');
+        $entreprise->nom = $request->input('nom');       
+        $entreprise->save();
+        return redirect()->route('entreprise.profil')->with('success','information ajoutée');
     }
 
     /**
@@ -46,7 +55,10 @@ class ProfilController extends Controller
      */
     public function edit(string $id)
     {
-        return view('entreprise.profil.edit');
+
+        $entreprise= Entreprise::find($id);
+        return  view('entreprise.profil.edit',compact('entreprise'));
+        //return view('entreprise.profil.edit');
     }
 
     /**

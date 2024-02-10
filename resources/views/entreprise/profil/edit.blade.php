@@ -1,5 +1,14 @@
 @extends('partials._layout')
 @section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
 
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
@@ -16,8 +25,24 @@
                 <p class="text-center mb-4">Your Social Campaigns</p>
                 <form>
                   <div class="mb-5">
-                    <label for="exampleInputEmail1" class="form-label">Logo de l'entreprise</label>
-                    <input type="file" name="logoEntreprise" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="avatar" class="form-label">Logo de l'entreprise</label>
+                    <input type="file" name=" " class="form-control" id="fileInput"  accept="image/*"/>
+                    <fieldset>
+                   <legend></legend>
+                   <img id="imagePreview" src="#" alt="Logo entreprise" width:10px height:10px>
+                    </fieldset>
+                    <script>
+                      document.getElementById('fileInput').addEventListener('change', function(event) {
+                       var file = event.target.files[0];
+                       var reader = new FileReader();
+
+                       reader.onload = function(event) {
+                       document.getElementById('imagePreview').src = event.target.result;
+                       };
+
+                      reader.readAsDataURL(file);
+                        });
+                      </script>
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Nom de l'entreprise</label>
@@ -37,4 +62,6 @@
       </div>
     </div>
   </div>
+  </body>
+</html>
 @endsection
