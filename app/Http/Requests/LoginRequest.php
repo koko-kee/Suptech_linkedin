@@ -3,8 +3,13 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\Events\Lockout;
+use Illuminate\Support\Str;
 
-class EntrepriseRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +27,9 @@ class EntrepriseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
-            'email' => ['required','email','unique:entreprises'],
-            'logo' => ['image'],
-            'satut_id' => ['required','integer','exists:statuts,id']
+            'email' => 'required|email',
+            'password' => 'required',
         ];
     }
+
 }

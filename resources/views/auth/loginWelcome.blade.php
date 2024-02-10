@@ -12,14 +12,13 @@ data-sidebar-position="fixed" data-header-position="fixed">
         <div class="card mb-0">
           <div class="card-body">
             <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-              <img src="../assets/images/logos/dark-logo.svg" width="180" alt="">
+              <img src="../assets/images/logos/logo.png" width="180" alt="">
             </a>
             <p class="text-center text-capitalize fw-bold">Qui etes vous?</p>
             <div class="row">
                 <a href="{{route('register',['id'=> 1])}}" class="btn btn-info fw-bold mb-4">Candidat</a>
                 <a href="{{route('register',['id'=> 2])}}" class="btn btn-primary fw-bold mb-4">Entreprise</a>
             </div>
-
           </div>
         </div>
       </div>
