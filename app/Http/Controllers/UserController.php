@@ -11,7 +11,7 @@ class UserController extends Controller
     public function Index(){
 
     $offres = Offre::all();
-    return view('index', compact('offres'));
+    return view('candidats.index', compact('offres'));
 
     }
 }
