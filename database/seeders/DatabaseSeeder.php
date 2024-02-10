@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
            LocaliteSeeder::class,
            NiveauSeeder::class,
            RoleSeeder::class,
-           UserSeeder::class
+           UserSeeder::class,
+           OffreSeeder::class
        ]);
     }
 }
