@@ -42,7 +42,7 @@
                                     <div class="mb-3">
                                         <label for="disabledSelect" class="form-label">Disabled select menu</label>
                                         <select name="statut_id" id="disabledSelect" class="form-select">
-                                            @foreach(getAllStatus() as $statut)
+                                            @foreach($status as $statut)
                                                 <option value="{{$statut->id}}">{{$statut->name}}</option>
                                             @endforeach
                                         </select>
