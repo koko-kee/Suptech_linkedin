@@ -18,9 +18,7 @@ class ForgetController extends Controller{
     public function Reset(ResetRequest $request){
 
         //1. verifier le contenu de la saisie
-        $request->validate([
-            'email' => 'required|email',
-        ]);
+        $request->validated();
 
            /* 
            Vérifier si l'utilisateur existe avec l'adresse e-mail fournie
@@ -33,16 +31,13 @@ class ForgetController extends Controller{
             */
 
            //2a. générer un token 
-           $token = str_random(16);
+           $token = \Str::random(16);
 
            //2b. insérer ce token dans notre db
            DB::table('password_reset_tokens')->insert([
             'email' => $request->email,  
             'token' => $token,
             ]);
-
-            //3. générer un lien de redirection pour l'email 
-            $resetUrl = URL::to('/reset') . '?token=' . $token;
 
             //4. envoyer l'email
             Mail::send('resetEmail', ['token' => $token], function ($message) use ($request) {
