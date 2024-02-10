@@ -11,7 +11,7 @@ class FormRequestCompany extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,9 +22,10 @@ class FormRequestCompany extends FormRequest
     public function rules(): array
     {
         return [
-            'name'  => 'required|string|max:255|',
-            'logo' => 'required|string',
-            'statut_id' => 'required|exists:status,id'
+            'name' => ['required'],
+            'email' => ['required','email','unique:entreprises'],
+            'logo' => ['image','nullable'],
+            'statut_id' => ['required','integer','exists:statuts,id']
         ];
     }
 }

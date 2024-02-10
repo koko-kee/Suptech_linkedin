@@ -40,6 +40,15 @@
                         <span class="hide-menu">Gerer Mon CV</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">Gestion des roles</span>
+                    </a>
+                </li>
+
         </nav>
         <!-- End Sidebar navigation -->
     </div>
