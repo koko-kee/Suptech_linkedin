@@ -36,7 +36,7 @@ class AuthenticateSessionController extends Controller
         if(Auth::user()->ManyRoles()){
            session::put('current_role','AdminEntreprise');
         }
-        return redirect()->route('roles.index');
+        return redirect()->route('offres');
     }
 
 

@@ -2,14 +2,21 @@
 
 @section('content')
 
+@foreach ($offres as $offre)
+
 <div class="card">
     <!-- <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="..."> -->
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-            the
-            card's content.</p>
-        <a href="#" class="btn btn-primary">Voir l'offres</a>
+        <h5 class="card-title">{{ $offre->entreprise->name }}</h5>
+        <h5 class="card-title">{{ $offre->name }}</h5>
+        <p class="card-text">{{ $offre->description }}</p>
+        <p class="card-text">{{ $offre->created_at->diffForHumans()}}</p>
+        
+        <a href="{{ route('offres') }}" class="btn btn-primary">Voir l'offre</a>
+
     </div>
 </div>
+
+@endforeach
+
 @endsection
