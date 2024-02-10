@@ -14,14 +14,14 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Home</span>
+                    <span class="hide-menu">Acceuil</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./index.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('offres')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                        <span class="hide-menu">Mon Profil</span>
+                        <span class="hide-menu">Offres</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -41,11 +41,38 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('roles.index')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
                         <span class="hide-menu">Gestion des roles</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('competences.index')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">Gestion des competences</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('niveaux.index')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">Gestion des niveaux</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('localites.index')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">Gestion des localites</span>
                     </a>
                 </li>
 
