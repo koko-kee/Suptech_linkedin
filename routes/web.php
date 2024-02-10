@@ -2,6 +2,8 @@
 
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfilController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('candidats/profile/profil');
-});
+Route::get('/index', 'App\Http\Controllers\UserController@index')->name('offres');
+Route::get('/user/profil',[ProfilController::class,'showProfil'])->name('user.profil.index');
+Route::get('/user/profil/edit',[ProfilController::class,'editProfil'])->name('user.profil.edit');
+Route::post('/user/profil/update',[ProfilController::class,'updateProfil'])->name('user.profil.update');
