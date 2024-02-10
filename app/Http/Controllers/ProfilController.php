@@ -8,7 +8,6 @@ class ProfilController extends Controller
 {
     public function showProfil(){
 
-        AUTH::user();
         $user = auth()->user();   
         return view('candidats.profile.profil', compact ('user'));
 
@@ -26,11 +25,18 @@ public function updateProfil(Request $request)
 {
     
     $request->validate([
+
+        'name'=>["required"],
+        'telephone'=>["required"],
+        'adresse'=>["required"],
+        'date_naissance'=>["required", "date"],
+        'email'=>["required", "email"],
+
         
     ]);
     $user = auth()->user();
     $user->update($request->all());
-    return redirect()->route('user.profil.index');
+    return redirect()->route('user.profil.index')->with("success", "Modifier avec succes");
 }
 
 
