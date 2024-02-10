@@ -13,4 +13,9 @@ class Offre extends Model
     {
         return $this->hasMany(Demande::class);
     }
+
+    public function  entreprise()
+    {
+        return $this->belongsTo(Entreprise::class);
+    }
 }
