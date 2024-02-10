@@ -9,10 +9,8 @@ class Offre extends Model
 {
     use HasFactory;
 
-    public  function demandes()
+    public function  demandes()
     {
         return $this->hasMany(Demande::class);
     }
 }
-
-
