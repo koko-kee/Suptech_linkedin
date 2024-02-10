@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Offre extends Model
 {
     use HasFactory;
+
+    public  function demandes()
+    {
+        return $this->hasMany(Demande::class);
+    }
 }
+
+

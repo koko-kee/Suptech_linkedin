@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Statut extends Model
 {
     use HasFactory;
+
+    public  function  entreprises()
+    {
+        return $this->hasMany(Entreprise::class);
+    }
 }
