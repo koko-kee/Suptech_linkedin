@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\CompetenceController;
 use App\Http\Controllers\Admin\LocaliteController;
 use App\Http\Controllers\Admin\NiveauController;
+
+use App\Http\Controllers\Entreprise\ProfilController as EntreprisePrfil;
+use App\Http\Controllers\Entreprise\OffreController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -97,3 +100,11 @@ Route::prefix('localite')
             Route::patch('/update/{id}','update')->name('update');
             Route::delete('/destroy/{id}', 'destroy')->name('destroy');
         });
+Route::get('/entreprise', function () {
+    return view('entreprise.index');
+});
+
+Route::get('/entreprise/profil', [EntreprisePrfil::class,'index'])->name('entreprise.profil');
+Route::get('/entreprise/profil/edit/{id}', [EntreprisePrfil::class,'edit'])->name('entreprise.profil.edit/{id}');
+Route::get('/entreprise/offre', [OffreController::class,'create'])->name('entreprise.offre');
+Route::post('/entreprise/offre', [OffreController::class,'store'])->name('entreprise.offre.store');
