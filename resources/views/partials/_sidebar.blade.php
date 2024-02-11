@@ -18,20 +18,28 @@
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('offres')}}" aria-expanded="false">
-                <span>
-                  <i class="ti ti-layout-dashboard"></i>
-                </span>
+                        <span>
+                        <i class="ti ti-layout-dashboard"></i>
+                        </span>
                         <span class="hide-menu">Offres</span>
-                        <span class="hide-menu">Tableau de bord</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="#" aria-expanded="false">
+                        <span>
+                        <i class="ti ti-layout-dashboard"></i>
+                        </span>
+                        <span class="hide-menu">Tableau de bord</span>
+                    </a>
+                </li>
+        
+
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
                 <span>
-                  <i class="fa-solid fa-user"></i>
+                    <i class="ti ti-layout-dashboard"></i>
                 </span>
                         <span class="hide-menu">Mes Demandes</span>
-                        <span class="hide-menu">Profil</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -68,15 +76,7 @@
                         <span class="hide-menu">Gestion des niveaux</span>
                     </a>
                 </li>
-
-                        <span class="hide-menu">Offres</span>
-                    </a>
-                </li>
                 
-                <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">AUTH</span>
-                </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('localites.index')}}" aria-expanded="false">
                 <span>
