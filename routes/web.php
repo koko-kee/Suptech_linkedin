@@ -108,3 +108,4 @@ Route::get('/entreprise/profil', [EntrepriseProfil::class,'index'])->name('entre
 Route::get('/entreprise/profil/edit/{id}', [EntrepriseProfil::class,'edit'])->name('entreprise.profil.edit/{id}');
 Route::get('/entreprise/offre', [OffreController::class,'create'])->name('entreprise.offre');
 Route::post('/entreprise/offre', [OffreController::class,'store'])->name('entreprise.offre.store');
+Route::get('/entreprise/offre/{offre}', [OffreController::class,'show'])->name('entreprise.offre.show');
