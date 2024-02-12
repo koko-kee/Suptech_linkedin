@@ -26,14 +26,20 @@
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="#" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">Nos Offres</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('entreprise.offre')}}" aria-expanded="false">
                         <span>
                         <i class="ti ti-layout-dashboard"></i>
                         </span>
-                        <span class="hide-menu">Tableau de bord</span>
+                        <span class="hide-menu">Publier une Offre</span>
                     </a>
                 </li>
-        
-
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
                 <span>
@@ -76,7 +82,7 @@
                         <span class="hide-menu">Gestion des niveaux</span>
                     </a>
                 </li>
-                
+
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('localites.index')}}" aria-expanded="false">
                 <span>
