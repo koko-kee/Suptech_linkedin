@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
            NiveauSeeder::class,
            RoleSeeder::class,
            UserSeeder::class,
-           OffreSeeder::class
+           OffreSeeder::class,
+           StatutOffreSeeder::class,
+           TypeContratSeeder::class
        ]);
     }
 }

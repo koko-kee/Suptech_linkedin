@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Demande extends Model
+class StatutOffre extends Model
 {
     use HasFactory;
 
-    protected  $guarded = [];
-    
-    public function offre()
+    public  function  offres()
     {
-        return $this->belongsTo(Offre::class);
+        return $this->hasMany(Offre::class);
     }
 }
