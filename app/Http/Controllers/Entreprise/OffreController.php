@@ -40,6 +40,10 @@ class OffreController extends Controller
         $request->validate([
             'libelle'=> "required",
             'description'=> "required",
+            'date_limite'=> "required|date",
+            'localisation'=> "required|string",
+            'statut_offre_id'=> "required|exists:statut_offres,id",
+            'type_contrat_id'=> "required|exists:type_contrats,id",
         ],
         [
             'libelle.required' =>"Le libellé ne doit pas etre vide",
@@ -52,12 +56,12 @@ class OffreController extends Controller
         'libelle' => $request->input('libelle'),
         'description' => $request->input('description'),
         'localisation' => $request->input('localisation'),
-        'date_limite' => $request->input('date_limit'),
+        'date_limite' => $request->input('date_limite'),
         'statut_offre_id' => $request->input('statut_offre_id'),
         'type_contrat_id' => $request->input('type_contrat_id'),
         'entreprise_id' => 1
     ]);
-    return redirect()->back();
+    return redirect()->back()->with('success',"Offre publier");
     }
 
     /**

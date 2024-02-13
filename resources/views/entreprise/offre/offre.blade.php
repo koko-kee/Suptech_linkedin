@@ -1,6 +1,11 @@
 @extends('partials._layout')
 @section('content')
     <h5 class="card-title fw-semibold mb-4">Nouvelle Offre</h5>
+    @if(session('success'))
+<div class="alert alert-success" role="alert">
+{{session('success')}}
+</div>
+@endif
     <div class="card">
         <div class="card-body">
             <form  class="form-group" action="{{route('entreprise.offre.store')}}" method="POST">
@@ -39,7 +44,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="disabledSelect" class="form-label">Statut de l'offre</label>
-                            <select id="disabledSelect" name="type_contrat_id" class="form-select">
+                            <select id="disabledSelect" name="statut_offre_id" class="form-select">
                                 @foreach($statusOffre as $offreStatut)
                                     <option value="{{$offreStatut->id}}">{{$offreStatut->name}}</option>
                                 @endforeach

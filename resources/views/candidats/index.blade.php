@@ -2,9 +2,6 @@
 
 @section('content')
 
-<livewire:offre/>  
-
-
-
+<livewire:offre/>
 
 @endsection

@@ -16,6 +16,9 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Accueil</span>
                 </li>
+                {{-- START SIDEAR FOR THE CANDIDAT --}}
+                @if (session('current_role') == 'candidat' && Auth::User())
+                    
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('offres')}}" aria-expanded="false">
                         <span>
@@ -24,6 +27,32 @@
                         <span class="hide-menu">Offres</span>
                     </a>
                 </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                <span>
+                    <i class="ti ti-layout-dashboard"></i>
+                </span>
+                        <span class="hide-menu">Mes Demandes</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">Gerer Mon CV</span>
+                    </a>
+                </li>
+                @endif
+            
+                {{-- END SIDEAR FOR THE CANDIDAT --}}
+
+                {{-- START SIDEAR FOR THE ENTREPRISE --}}
+
+                 @if (session('current_role') == 'AdminEntreprise' && Auth::User())
+
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
@@ -40,22 +69,13 @@
                         <span class="hide-menu">Publier une Offre</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
-                <span>
-                    <i class="ti ti-layout-dashboard"></i>
-                </span>
-                        <span class="hide-menu">Mes Demandes</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-alert-circle"></i>
-                </span>
-                        <span class="hide-menu">Gerer Mon CV</span>
-                    </a>
-                </li>
+                @endif
+                 {{-- END SIDEAR FOR THE ENTREPRISE --}}
+
+                @if (Auth::User()->isAdmin())
+                
+                {{-- Start SideBar For the admin --}}
+            
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('roles.index')}}" aria-expanded="false">
                 <span>
@@ -91,6 +111,8 @@
                         <span class="hide-menu">Gestion des localites</span>
                     </a>
                 </li>
+                @endif
+                {{-- End SideBar For the admin --}}
         </nav>
         <!-- End Sidebar navigation -->
     </div>
