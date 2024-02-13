@@ -17,8 +17,15 @@ class SwipeRoleController extends Controller
         $role = Role::find($roleId);
 
         if ($user && $role) {
+            
             session::put('current_role',$role->name);
-            return redirect()->back();
+
+            if($role->name == 'candidat'){
+                return redirect()->route('offres');
+            }else{
+                return redirect()->route('dash');
+            }
+        
         }
     }
 }

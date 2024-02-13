@@ -8,7 +8,8 @@ use App\Models\TypeContrat;
 use Illuminate\Support\Str;
 use Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Session;
 
 class OffreController extends Controller
 {
@@ -17,7 +18,13 @@ class OffreController extends Controller
      */
     public function index()
     {
+        
+    }
 
+    public function MyOffre()
+    {
+        $myOffre = Offre::where('entreprise_id',FacadesAuth::User()->entreprise_id)->get();
+        return View('entreprise.offre.NosOffre',compact('myOffre'));
     }
 
     /**
