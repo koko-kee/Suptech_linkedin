@@ -45,8 +45,8 @@
                                         <a class="text-primary fw-bold ms-2" href="{{route('welcome')}}">Sign In</a>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-bold">Password forgotten?</p>
-                                        <a class="text-primary fw-bold ms-2" href="{{route('forget')}}">Click here</a>
+                                        <p class="fs-4 mb-0 fw-bold">Mot de passe oublié?</p>
+                                        <a class="text-primary fw-bold ms-2" href="{{route('forget')}}">Cliquer ici</a>
                                     </div>
                                 </form>
                             </div>
