@@ -37,6 +37,7 @@ class AuthenticateSessionController extends Controller
            session::put('current_role','AdminEntreprise');
            return redirect()->route('dash');
         }else{
+            session::put('current_role','candidat');
             return redirect()->route('offres');
         }
     }
