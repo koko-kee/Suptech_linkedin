@@ -15,19 +15,19 @@
 </head>
 <body>
     <h1>Réinitialisation de mot de passe</h1>
-    <p>
-        Vous avez demandé la réinitialisation de votre mot de passe. 
-        Veuillez cliquer sur le lien ci-dessous pour réinitialiser votre mot de passe :
-    </p>
-    <p>
-        <a href="{{ $resetUrl }}">Réinitialiser votre mot de passe</a>
-    </p>
-    <p>
-        Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer cet e-mail en toute sécurité.
-    </p>
+    <pre>
+        Cher utilisateur,
+            Vous auriez récemment demandé à changer votre mot de passe.
+            Pour se faire, veuillez simplement cliquer sur le lien ci-dessous :
 
-    <div class="container">
-        <img src="{{ asset('images/logos/logo.png') }}" alt="logo" class="image">
-    </div>
+            <a class="reset-link" href="{{ route('checkToken', ['token' => $token]) }}">Réinitialiser le mot de passe</a>
+        
+        Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer cet e-mail en toute sécurité.
+
+                                                                                                Cordialement.
+    </pre>
+<!--
+    inserer le logo
+!-->    
 </body>
 </html>
