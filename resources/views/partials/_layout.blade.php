@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize Free</title>
+    <title>Suptech LinkedIN </title>
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
     <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/logos/favicon.png')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/styles.min.css')}}"/>
+
+    @livewireStyles
 </head>
 
 <body>
@@ -75,6 +77,9 @@ Pour cela vous devez :
 Soyez vigilant ! N'envoyez pas d'argent à un employeur potentiel. Ne versez aucune somme d'argent en échange d'un contrat de travail potentiel ou pour suivre une formation préalable à l'embauche. Merci de signaler toute irrégularité en utilisant le formulaire de contact candidat et en sélectionnant l'objet "Signaler une annonce d'emploi".`);
 
 </script>
+
+
+@livewireScripts
 </body>
 
 </html>

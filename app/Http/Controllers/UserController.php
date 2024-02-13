@@ -14,4 +14,8 @@ class UserController extends Controller
     return view('candidats.index', compact('offres'));
 
     }
+
+
+
+    
 }

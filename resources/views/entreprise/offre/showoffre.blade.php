@@ -9,9 +9,7 @@
     <span class="badge bg-primary mb-3">{{$offre->created_at->diffForHumans()}}</span>
     <span class="badge bg-success mb-3">Status: ouvert</span>
     <hr>
-   <form>
-       <div class="btn btn-danger fw-bold">Postuler Maintenant</div>
-   </form>
+   <a class="btn btn-danger fw-bold" href="{{route('candidats.postule', $offre->id)}}">Postuler Maintenant</a>
     <hr>
     {!! Illuminate\Support\Str::markdown($offre->description) !!}
 </div>
