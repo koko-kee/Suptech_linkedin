@@ -52,9 +52,16 @@
                 {{-- START SIDEAR FOR THE ENTREPRISE --}}
 
                  @if (session('current_role') == 'AdminEntreprise' && Auth::User())
-
+                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('dash')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">DashBoard</span>
+                    </a>
+                </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('entreprise.offre.Myoffre')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>

@@ -40,6 +40,10 @@ Route::get('/',function (){
     return redirect()->route('login');
 });
 
+Route::get('/Dashbord',function (){
+    return View('dashboard');
+})->name('dash');
+
 
 Route::get('/switch-role/{roleId}', [SwipeRoleController::class,'SwipeRole'])->name('switchRole');
 
@@ -104,7 +108,7 @@ Route::prefix('localite')
 Route::get('/entreprise', function () {
     return view('entreprise.index');
 });
-
+Route::get('/entreprise/nosOffre', [OffreController::class,'MyOffre'])->name('entreprise.offre.Myoffre');
 Route::get('/entreprise/profil', [EntrepriseProfil::class,'index'])->name('entreprise.profil');
 Route::get('/entreprise/profil/edit/{id}', [EntrepriseProfil::class,'edit'])->name('entreprise.profil.edit/{id}');
 Route::get('/entreprise/offre', [OffreController::class,'create'])->name('entreprise.offre');
