@@ -82,7 +82,22 @@
                 @if (Auth::User()->isAdmin())
                 
                 {{-- Start SideBar For the admin --}}
-            
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('dash')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">DashBoard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">Gestion des entreprises</span>
+                    </a>
+                </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('roles.index')}}" aria-expanded="false">
                 <span>

@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Demande;
+use App\Models\Entreprise;
+use App\Models\StatutOffre;
+use App\Models\TypeContrat;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Offre extends Model
 {
