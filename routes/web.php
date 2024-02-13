@@ -15,6 +15,8 @@ use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\Admin\EntrepriseController as EntrepriseAdminController;
+
 
 
 /*
@@ -123,3 +125,6 @@ Route::post('/entreprise/offre/edit/{offre}', [OffreController::class,'update'])
 // Route pour postuler a une offre
 Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule');
 Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candidats.postule.store');
+
+//Gestion des Entreprises 
+Route::get('Admin/entreprise/',[EntrepriseAdminController::class,'index'])->name('Admin.entreprise.index');
