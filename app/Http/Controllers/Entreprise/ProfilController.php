@@ -31,6 +31,12 @@ class ProfilController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nom'=> "required",
+            'logo'=> "required"
+         ]);
+
+        
     }
 
     /**
@@ -46,7 +52,10 @@ class ProfilController extends Controller
      */
     public function edit(string $id)
     {
-        return view('entreprise.profil.edit');
+         // 
+        
+
+         
     }
 
     /**

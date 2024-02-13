@@ -5,6 +5,9 @@ data-sidebar-position="fixed" data-header-position="fixed">
 <div
   class="">
   <div class="d-flex align-items-center justify-content-center w-100">
+    @if (Session('succes'))
+        
+    @endif
     <div class="row justify-content-center w-100">
       <div class="col-md-8 col-lg-6 col-xxl-3">
         <div class="card mb-0">

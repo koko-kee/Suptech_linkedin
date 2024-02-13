@@ -33,7 +33,7 @@
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
-                        <span class="hide-menu">Buttons</span>
+                        <span class="hide-menu">Profil</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -41,7 +41,7 @@
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                        <span class="hide-menu">Alerts</span>
+                        <span class="hide-menu">Mes offres</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

@@ -42,10 +42,11 @@ class OffreController extends Controller
     );
     $offre = Offre::create([
         'libelle' => $request->input('libelle'),
-        'description' => $request->input('description')
+        'description' => $request->input('description'),
+        'entreprise_id' => 1
         
     ]);
-    return redirect()->back();
+    return redirect()->back()->with('succes',"Offre ajouter avec succes");
     }
 
     /**
