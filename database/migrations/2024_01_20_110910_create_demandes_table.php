@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('demandes', function (Blueprint $table){
             $table->id();
+            $table->string("cv");
             $table->foreignIdFor(\App\Models\Entreprise::class);
             $table->foreignIdFor(\App\Models\User::class);
             $table->timestamps();

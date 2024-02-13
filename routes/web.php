@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('candidats/profile/profil');
-});
+
+Route::get("candidat/profil",[userController::class,"showProfil"])->name("candidats.profil");
+Route::post("candidat/demande",[userController::class,"storeCV"])->name("candidats.demande.store");
