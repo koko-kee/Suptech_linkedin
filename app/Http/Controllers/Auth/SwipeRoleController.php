@@ -15,7 +15,7 @@ class SwipeRoleController extends Controller
     {
         $user = Aut::user();
         $role = Role::find($roleId);
-
+        
         if ($user && $role) {
             
             session::put('current_role',$role->name);
