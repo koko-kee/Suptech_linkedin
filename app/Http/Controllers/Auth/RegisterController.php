@@ -47,6 +47,7 @@ class RegisterController extends Controller
           Session::put('user',$user);
           return redirect()->route('FormCreateCompany');
       }
+
   }
 
   public function FormCreateCompany()

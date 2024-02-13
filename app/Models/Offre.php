@@ -2,17 +2,36 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Demande;
+use App\Models\Entreprise;
+use App\Models\StatutOffre;
+use App\Models\TypeContrat;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Offre extends Model
 {
     use HasFactory;
 
-    public  function demandes()
+    protected  $guarded = [];
+
+    public function  demandes()
     {
         return $this->hasMany(Demande::class);
     }
+
+    public function contrat()
+    {
+        return $this->belongsTo(TypeContrat::class);
+    }
+
+    public function statut()
+    {
+        return $this->belongsTo(StatutOffre::class);
+    }
+
+    public function  entreprise()
+    {
+        return $this->belongsTo(Entreprise::class);
+    }
 }
-
-
