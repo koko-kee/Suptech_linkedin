@@ -4,9 +4,10 @@
         <!--button class="btn btn-outline-primary" type="submit">Rechercher</button-->
       </form>
 
-      
+   
+
     
-    @foreach ($offres as $offre)
+    @forelse($offres as $offre)
     
     <div class="card">
         <!-- <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="..."> -->
@@ -20,6 +21,9 @@
             <a href="{{ route('entreprise.offre.show',$offre->id) }}" class="btn btn-primary">Voir l'offre</a>
         </div>
     </div>
-
-    @endforeach
+    @empty
+     <div class="alert alert-danger">
+        Aucun resulat pour cette recherche
+     </div>
+    @endforelse
 </div>

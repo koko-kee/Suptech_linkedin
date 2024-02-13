@@ -18,11 +18,12 @@ class SendMailDemande extends Mailable
 
     /**
      * Create a new message instance.
-     */
-    public function __construct(public Offre $offre, public User $user)
-    {
-        
-    }
+    */
+    public function __construct
+    (
+        public Offre $offre, public User $user
+    )
+    {}
 
     /**
      * Get the message envelope.
@@ -30,9 +31,9 @@ class SendMailDemande extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('kone@admin.ci'),
-            to: 'user@coumba.ml', 
-            subject: 'Stage',
+            from: new Address($this->user->email),
+            to: $this->offre->entreprise->email, 
+            subject: $this->offre->libelle,
         );
     }
 
