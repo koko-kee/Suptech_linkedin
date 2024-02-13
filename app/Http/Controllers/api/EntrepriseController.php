@@ -31,14 +31,16 @@ class EntrepriseController extends Controller
     }
 
 
-    public function show(Entreprise $entreprise)
+    public function show(int $id)
     {
-        return response(['entreprise' => $entreprise], 200);
+        return response(['entreprise' => Entreprise::find($id)], 200);
     }
 
 
-    public function update(EntrepriseRequest $request, Entreprise $entreprise)
+    public function update(EntrepriseRequest $request, int $id)
     {
+        $entreprise = Entreprise::find($id);
+
         $dataValidated = $request->validated();
         if (isset($data["image"])){
 
@@ -52,12 +54,14 @@ class EntrepriseController extends Controller
         return response(['message' => 'mise à jour effectuée'], 200);
     }
 
-    public function destroy(Entreprise $entreprise)
+    public function destroy(int $id)
     {
-        if ($entreprise->logo){
+        $entreprise =  Entreprise::find($id);
 
+        if ($entreprise->logo){
             Storage::disk("public")->delete($entreprise->logo);
         }
+
         $entreprise->delete();
         return response(['message' => 'suppression effectuer'], 200);
     }

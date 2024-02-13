@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('traitements', function (Blueprint $table){
-
             $table->id();
             $table->foreignIdFor(\App\Models\Demande::class);
+            $table->string('satuts')->default('en attente');
             $table->foreignIdFor(\App\Models\User::class);
             $table->timestamps();
-
         });
     }
 
