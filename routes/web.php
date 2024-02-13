@@ -108,12 +108,18 @@ Route::prefix('localite')
 Route::get('/entreprise', function () {
     return view('entreprise.index');
 });
-Route::get('/entreprise/nosOffre', [OffreController::class,'MyOffre'])->name('entreprise.offre.Myoffre');
+
+// Route pour l'entreprise offre
+
+Route::get('/entreprise/Nosoffre', [OffreController::class,'MyOffre'])->name('entreprise.offre.Myoffre');
 Route::get('/entreprise/profil', [EntrepriseProfil::class,'index'])->name('entreprise.profil');
 Route::get('/entreprise/profil/edit/{id}', [EntrepriseProfil::class,'edit'])->name('entreprise.profil.edit/{id}');
 Route::get('/entreprise/offre', [OffreController::class,'create'])->name('entreprise.offre');
 Route::post('/entreprise/offre', [OffreController::class,'store'])->name('entreprise.offre.store');
 Route::get('/entreprise/offre/{offre}', [OffreController::class,'show'])->name('entreprise.offre.show');
+Route::get('/entreprise/offre/edit/{offre}', [OffreController::class,'edit'])->name('entreprise.offre.edit');
+Route::post('/entreprise/offre/edit/{offre}', [OffreController::class,'update'])->name('entreprise.offre.update');
 
+// Route pour postuler a une offre
 Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule');
 Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candidats.postule.store');
