@@ -65,7 +65,10 @@ Route::get('/createCompany', [RegisterController::class, 'FormCreateCompany'])->
 
 // Routes pour la récupération de mot de passe
 Route::get('/forgetPassword', [ForgetController::class, 'FormForget'])->name('forget');
-Route::post('/resetPassword', [ForgetController::class, 'Reset'])->name('reset');
+Route::post('/SendToken', [ForgetController::class, 'SendToken'])->name('send');
+Route::get('/checkToken/{token}', [ForgetController::class, 'CheckToken'])->name('checkToken');
+Route::get('/reset', [ForgetController::class, 'FormReset'])->name('reset');
+Route::post('/newPassword', [ForgetController::class, 'newPassword'])->name('resetCompleted');
 
 // Routes pour les rôles d'administration
 Route::get('/roles', [RoleController::class, 'index'])->name('roles.index')->middleware('auth');
@@ -128,3 +131,7 @@ Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candid
 
 //Gestion des Entreprises 
 Route::get('Admin/entreprise/',[EntrepriseAdminController::class,'index'])->name('Admin.entreprise.index');
+Route::get('Admin/entreprise/enableAccount/{entreprise}',[EntrepriseAdminController::class,'EnableAccount'])->name('Admin.entreprise.enableAccount');
+Route::get('Admin/entreprise/diseableAccount/{entreprise}',[EntrepriseAdminController::class,'DiseableAccount'])->name('Admin.entreprise.DiseableAccount');
+
+
