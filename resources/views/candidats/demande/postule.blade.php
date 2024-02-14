@@ -1,8 +1,8 @@
-@extends('partials._layout')
+{{-- @extends('partials._layout')
 
 @section('content')
 
-<h5 class="card-title fw-semibold mb-4">POSTULER </h5>   
+<h5 class="card-title fw-semibold mb-4">POSTULER</h5>   
 @if ($errors->any())
 <div class="alert alert-danger">
     <ul>
@@ -31,9 +31,9 @@
             <button type="submit" class="btn btn-primary">Postuler</button>
         </form>
    </div>
-</div>
+</div> --}}
 
-@endsection
+{{-- @endsection --}}
 @extends('partials._layout')
 
 @section('content')
@@ -41,7 +41,7 @@
 <h5 class="card-title fw-semibold mb-4">Postulation</h5>   
 <div class="card">
     <div class="card-body">
-        <form action="{{Route('candidats.demande.store')}}" method="post">
+        <form action="{{Route('candidats.postule.store',$id)}}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">CV</label>

@@ -14,13 +14,12 @@ class PostulerController extends Controller
 {
     public function showForm(int $id){
         return view('candidats.demande.postule', compact('id'));
-
     }
 
     public function store(Request $request, int $id){
 
         $request->validate([
-            'cv' => 'required|mimes:pdf|max:2048' // Validation pour s'assurer que le fichier est un PDF et de taille maximale 2MB
+            'cv' => 'required|mimes:pdf|max:2048'
         ]);
 
         if ($request->file('cv')) {
