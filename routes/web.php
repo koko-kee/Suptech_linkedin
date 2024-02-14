@@ -28,3 +28,4 @@ Route::get('/entreprise/profil', [ProfilController::class,'index'])->name('entre
 Route::get('/entreprise/profil/edit/{id}', [ProfilController::class,'edit'])->name('entreprise.profil.edit/{id}');
 Route::get('/entreprise/offre', [OffreController::class,'create'])->name('entreprise.offre');
 Route::post('/entreprise/offre', [OffreController::class,'store'])->name('entreprise.offre.store');
+Route::post('/entreprise/profil',[ProfilController::class,'store'])->name('entreprise.profil.store');
