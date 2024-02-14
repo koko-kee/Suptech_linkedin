@@ -12,14 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('entreprises', function (Blueprint $table){
-
             $table->id();
             $table->string('name');
-            $table->text('logo');
+            $table->text('logo')->nullable();
+            $table->text('email')->nullable();
             $table->boolean('isCompany')->default(false);
             $table->foreignIdFor(\App\Models\Statut::class);
             $table->timestamps();
-
         });
     }
 

@@ -9,6 +9,8 @@ class Demande extends Model
 {
     use HasFactory;
 
+    protected  $guarded = [];
+    
     public function offre()
     {
         return $this->belongsTo(Offre::class);

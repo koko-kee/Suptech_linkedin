@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Entreprise;
 use App\Http\Controllers\Controller;
-
 use App\Models\Offre;
+use App\Models\StatutOffre;
+use App\Models\TypeContrat;
+use Illuminate\Support\Str;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Session;
 
 class OffreController extends Controller
 {
@@ -14,7 +18,13 @@ class OffreController extends Controller
      */
     public function index()
     {
-        //
+        
+    }
+
+    public function MyOffre()
+    {
+        $myOffre = Offre::where('entreprise_id',FacadesAuth::User()->entreprise_id)->get();
+        return View('entreprise.offre.NosOffre',compact('myOffre'));
     }
 
     /**
@@ -22,7 +32,10 @@ class OffreController extends Controller
      */
     public function create()
     {
-        return view('entreprise.offre.offre');
+        return view('entreprise.offre.offre',[
+            'typeContrats' => TypeContrat::all(),
+            'statusOffre' => StatutOffre::all()
+        ]);
     }
 
     /**
@@ -33,41 +46,54 @@ class OffreController extends Controller
         //validation
         $request->validate([
             'libelle'=> "required",
-            'description'=> "required"
+            'description'=> "required",
+            'date_limite'=> "required|date",
+            'localisation'=> "required|string",
+            'statut_offre_id'=> "required|exists:statut_offres,id",
+            'type_contrat_id'=> "required|exists:type_contrats,id",
         ],
         [
             'libelle.required' =>"Le libellé ne doit pas etre vide",
             'description.required' =>"La description ne doit pas etre vide"
         ]
     );
+
     $offre = Offre::create([
+
         'libelle' => $request->input('libelle'),
-        'description' => $request->input('description')
-        
+        'description' => $request->input('description'),
+        'localisation' => $request->input('localisation'),
+        'date_limite' => $request->input('date_limite'),
+        'statut_offre_id' => $request->input('statut_offre_id'),
+        'type_contrat_id' => $request->input('type_contrat_id'),
+        'entreprise_id' => 1
     ]);
-    return redirect()->back();
+    return redirect()->back()->with('success',"Offre publier");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Offre $offre)
     {
-        //
+        $desc = Str::markdown($offre->description);
+        return View('entreprise.offre.showoffre',compact('offre','desc'));
     }
 
     /**
      * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    */
+    public function edit(Offre $offre)
     {
-        //
-    }
+        $typeContrats = TypeContrat::all();
+        $statusOffre = StatutOffre::all();
+        return View('entreprise.offre.edit',compact('offre','typeContrats','statusOffre'));
+    } 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Offre $offre)
     {
         //
     }
