@@ -39,10 +39,8 @@
               </tr>
             </thead>
             <tbody>
-                @foreach($roles as $role)
+            @foreach($roles as $role)
               <tr>
-                
-               
                 <td>{{$role->name}}</td>
                 <td>{{$role->description}}</td>
                <td>
