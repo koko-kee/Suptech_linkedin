@@ -3,7 +3,7 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="./index.html" class="text-nowrap logo-img">
-                <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+                <img src="{{asset('../assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
@@ -14,112 +14,127 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Home</span>
+                    <span class="hide-menu">Accueil</span>
                 </li>
+                {{-- START SIDEAR FOR THE CANDIDAT --}}
+                @if (session('current_role') == 'candidat' && Auth::User())
+                    
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./index.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-layout-dashboard"></i>
-                </span>
-                        <span class="hide-menu">Dashboard</span>
+                    <a class="sidebar-link" href="{{route('offres')}}" aria-expanded="false">
+                        <span>
+                        <i class="ti ti-layout-dashboard"></i>
+                        </span>
+                        <span class="hide-menu">Offres</span>
                     </a>
                 </li>
-                <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">UI COMPONENTS</span>
-                </li>
+
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
                 <span>
-                  <i class="ti ti-article"></i>
+                    <i class="ti ti-layout-dashboard"></i>
                 </span>
-                        <span class="hide-menu">Profil</span>
+                        <span class="hide-menu">Mes Demandes</span>
                     </a>
                 </li>
+
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                        <span class="hide-menu">Mes offres</span>
+                        <span class="hide-menu">Gerer Mon CV</span>
+                    </a>
+                </li>
+                @endif
+            
+                {{-- END SIDEAR FOR THE CANDIDAT --}}
+
+                {{-- START SIDEAR FOR THE ENTREPRISE --}}
+
+                 @if (session('current_role') == 'AdminEntreprise' && Auth::User())
+                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('dash')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">DashBoard</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('entreprise.offre.Myoffre')}}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-cards"></i>
+                  <i class="ti ti-alert-circle"></i>
                 </span>
-                        <span class="hide-menu">Card</span>
+                        <span class="hide-menu">Nos Offres</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('entreprise.offre')}}" aria-expanded="false">
+                        <span>
+                        <i class="ti ti-layout-dashboard"></i>
+                        </span>
+                        <span class="hide-menu">Publier une Offre</span>
+                    </a>
+                </li>
+                @endif
+                 {{-- END SIDEAR FOR THE ENTREPRISE --}}
+
+                @if (Auth::User()->isAdmin())
+                
+                {{-- Start SideBar For the admin --}}
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('dash')}}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-file-description"></i>
+                  <i class="ti ti-alert-circle"></i>
                 </span>
-                        <span class="hide-menu">Forms</span>
+                        <span class="hide-menu">DashBoard</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('Admin.entreprise.index')}}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-typography"></i>
+                  <i class="ti ti-alert-circle"></i>
                 </span>
-                        <span class="hide-menu">Typography</span>
-                    </a>
-                </li>
-                <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">AUTH</span>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                        <span class="hide-menu">Login</span>
+                        <span class="hide-menu">Gestion des entreprises</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('roles.index')}}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-user-plus"></i>
+                  <i class="ti ti-alert-circle"></i>
                 </span>
-                        <span class="hide-menu">Register</span>
+                        <span class="hide-menu">Gestion des roles</span>
                     </a>
                 </li>
-                <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">EXTRA</span>
-                </li>
+
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('competences.index')}}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-mood-happy"></i>
+                  <i class="ti ti-alert-circle"></i>
                 </span>
-                        <span class="hide-menu">Icons</span>
+                        <span class="hide-menu">Gestion des competences</span>
                     </a>
                 </li>
+
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('niveaux.index')}}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-aperture"></i>
+                  <i class="ti ti-alert-circle"></i>
                 </span>
-                        <span class="hide-menu">Sample Page</span>
+                        <span class="hide-menu">Gestion des niveaux</span>
                     </a>
                 </li>
-            </ul>
-            <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
-                <div class="d-flex">
-                    <div class="unlimited-access-title me-3">
-                        <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Upgrade to pro</h6>
-                        <a href="https://adminmart.com/product/modernize-bootstrap-5-admin-template/" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
-                    </div>
-                    <div class="unlimited-access-img">
-                        <img src="../assets/images/backgrounds/rocket.png" alt="" class="img-fluid">
-                    </div>
-                </div>
-            </div>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('localites.index')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                        <span class="hide-menu">Gestion des localites</span>
+                    </a>
+                </li>
+                @endif
+                {{-- End SideBar For the admin --}}
         </nav>
         <!-- End Sidebar navigation -->
     </div>

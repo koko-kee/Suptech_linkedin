@@ -25,6 +25,7 @@
                             que perferendis iure quisquam debitis maior
                             es maxime?
                         </p>
+                        <a href="#" class="btn btn-dark">Voir l'offre</a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -33,6 +34,7 @@
                             que perferendis iure quisquam debitis maior
                             es maxime?
                         </p>
+                        <a href="#" class="btn btn-dark">Voir l'offre</a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -41,6 +43,7 @@
                             que perferendis iure quisquam debitis maior
                             es maxime?
                         </p>
+                        <a href="#" class="btn btn-dark">Voir l'offre</a>
                     </div>
                 </div>
                 <div class="col-4">
@@ -49,9 +52,10 @@
                             que perferendis iure quisquam debitis maior
                             es maxime?
                         </p>
+                        <a href="#" class="btn btn-dark">Voir l'offre</a>
                     </div>
                 </div> 
-                <div class="col-4 ">
+                {{--<div class="col-4 ">
                     <div class="card p-2">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum non, libero nam quas at
                             que perferendis iure quisquam debitis maior
@@ -66,7 +70,7 @@
                             es maxime?
                         </p>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </div>
