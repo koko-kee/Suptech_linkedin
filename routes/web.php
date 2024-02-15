@@ -16,6 +16,8 @@ use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\Admin\EntrepriseController as EntrepriseAdminController;
+
 
 
 /*
@@ -109,16 +111,23 @@ Route::prefix('localite')
 Route::get('/entreprise', function () {
     return view('entreprise.index');
 });
-Route::get('/entreprise/nosOffre', [OffreController::class,'MyOffre'])->name('entreprise.offre.Myoffre');
+
+// Route pour l'entreprise offre
+
+Route::get('/entreprise/Nosoffre', [OffreController::class,'MyOffre'])->name('entreprise.offre.Myoffre');
 Route::get('/entreprise/profil', [EntrepriseProfil::class,'index'])->name('entreprise.profil');
 Route::get('/entreprise/profil/edit/{id}', [EntrepriseProfil::class,'edit'])->name('entreprise.profil.edit/{id}');
 Route::get('/entreprise/offre', [OffreController::class,'create'])->name('entreprise.offre');
 Route::post('/entreprise/offre', [OffreController::class,'store'])->name('entreprise.offre.store');
 Route::get('/entreprise/offre/{offre}', [OffreController::class,'show'])->name('entreprise.offre.show');
+Route::get('/entreprise/offre/edit/{offre}', [OffreController::class,'edit'])->name('entreprise.offre.edit');
+Route::post('/entreprise/offre/edit/{offre}', [OffreController::class,'update'])->name('entreprise.offre.update');
 
+// Route pour postuler a une offre
 Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule');
 Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candidats.postule.store');
 
+<<<<<<< HEAD
 //Routes pour les cvs
 Route::get('/user/cv',[GestCvController::class, 'index'])->name('user.cv');
 Route::get('/user/cv/edit/{id}',[GestCvController::class, 'edit'])->name('user.cv.edit');
@@ -126,3 +135,7 @@ Route::post('/user/cv/create',[GestCvController::class, 'store'])->name('user.cv
 Route::patch('/user/cv/update/{id}',[GestCvController::class, 'update'])->name('user.cv.update');
 Route::delete('/user/cv/destroy/{id}',[GestCvController::class, 'destroy'])->name('user.cv.destroy');
 Route::get('/download/{id}', [GestCvController::class, 'dowmload'])->name('user.cv.download');
+=======
+//Gestion des Entreprises 
+Route::get('Admin/entreprise/',[EntrepriseAdminController::class,'index'])->name('Admin.entreprise.index');
+>>>>>>> 1c660268997d4a3406c8cc38f41d188022dec31c

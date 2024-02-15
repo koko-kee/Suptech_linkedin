@@ -34,9 +34,16 @@ class AuthenticateSessionController extends Controller
         }
         $request->session()->regenerate();
         if(Auth::user()->ManyRoles()){
+
            session::put('current_role','AdminEntreprise');
            return redirect()->route('dash');
-        }else{
+
+        }else if(Auth::user()->isAdmin()){
+
+            return redirect()->route('dash');
+        }
+        else{
+        
             session::put('current_role','candidat');
             return redirect()->route('offres');
         }

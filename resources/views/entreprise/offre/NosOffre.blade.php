@@ -34,17 +34,17 @@
                                     </td>
                                     <td class="border-bottom-0">
                                         <div class="d-flex align-items-center gap-2">
-                                            <span class="badge bg-info rounded-3 fw-semibold">Detail</span>
+                                          <a href="{{route('entreprise.offre.show',$offre->id)}}" class="badge bg-info rounded-3 fw-semibold">Detail</a>
                                         </div>
                                     </td>
                                     <td class="border-bottom-0">
                                         <div class="d-flex align-items-center gap-2">
-                                            <span class="badge bg-info rounded-3 fw-semibold">Status</span>
+                                            <span class="badge bg-info rounded-3 fw-semibold">{{($offre->statut == null) ? 'fermer' : $offre->statut->name  }}</span>
                                         </div>
                                     </td>
                                     <td class="border-bottom-0">
                                         <div class="d-flex align-items-center gap-2">
-                                            <span class="badge bg-danger rounded-3 fw-semibold">Editer</span>
+                                           <a class="badge bg-danger rounded-3 fw-semibold" href="{{route('entreprise.offre.edit',$offre->id)}}">Editer</a>
                                         </div>
                                     </td>
                                     <td class="border-bottom-0">

@@ -26,7 +26,7 @@
                                 <i class="ti ti-user fs-6"></i>
                                 <p class="mb-0 fs-3">My Profile</p>
                             </a>
-                            @if(session('current_role'))
+                            @if(Auth::User()->ManyRoles())
                                 <a href="{{route('switchRole',3)}}"
                                    class="d-flex align-items-center gap-2 dropdown-item @if(session('current_role') == 'candidat') bg-primary @endif">
                                     <i class="ti ti-user fs-6"></i>
