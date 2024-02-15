@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('entreprises', function (Blueprint $table){
             $table->id();
             $table->string('name');
-            $table->text('logo')->nullable();
+            $table->text('logo')->nullable()->default('/storage/logoEntreprise/company.png');
             $table->text('email')->nullable();
             $table->boolean('isCompany')->default(false);
             $table->foreignIdFor(\App\Models\Statut::class);

@@ -63,7 +63,7 @@
                 </div>
                 <div class="mb-5">
                     <label for="exampleInputPassword1" class="form-label">description de l'offre</label>
-                    <textarea name="description" id="" cols="30" rows="5" class="form-control"></textarea>
+                    <textarea  id="description" name="description" id="" cols="30" rows="5" class="form-control"></textarea>
                     @error('description')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
