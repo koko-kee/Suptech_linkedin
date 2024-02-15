@@ -134,6 +134,8 @@ Route::get('/entreprise/offre/{offre}', [OffreController::class,'show'])->name('
 Route::get('/entreprise/offre/edit/{offre}', [OffreController::class,'edit'])->name('entreprise.offre.edit')->middleware('auth');
 Route::post('/entreprise/offre/edit/{offre}', [OffreController::class,'update'])->name('entreprise.offre.update')->middleware('auth');
 
+Route::post('/entreprise/profil/update/{id}', [ProfilController::class,'update'])->name('entreprise.profil.update');
+
 // Route pour postuler a une offre
 Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule')->middleware('auth');
 Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candidats.postule.store')->middleware('auth');

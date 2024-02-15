@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Entreprise;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OffreRequest;
 use App\Models\Offre;
 use App\Models\StatutOffre;
 use App\Models\TypeContrat;
@@ -41,22 +42,15 @@ class OffreController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(OffreRequest $request)
     {
         //validation
-        $request->validate([
-            'libelle'=> "required",
-            'description'=> "required",
-            'date_limite'=> "required|date",
-            'localisation'=> "required|string",
-            'statut_offre_id'=> "required|exists:statut_offres,id",
-            'type_contrat_id'=> "required|exists:type_contrats,id",
-        ],
-        [
-            'libelle.required' =>"Le libellé ne doit pas etre vide",
-            'description.required' =>"La description ne doit pas etre vide"
-        ]
-    );
+        $request->validate(
+            [
+                'libelle.required' =>"Le libellé ne doit pas etre vide",
+                'description.required' =>"La description ne doit pas etre vide"
+            ]
+        );
 
     $offre = Offre::create([
 
@@ -66,7 +60,7 @@ class OffreController extends Controller
         'date_limite' => $request->input('date_limite'),
         'statut_offre_id' => $request->input('statut_offre_id'),
         'type_contrat_id' => $request->input('type_contrat_id'),
-        'entreprise_id' => 1
+        //'entreprise_id' => 1
     ]);
     return redirect()->back()->with('success',"Offre publier");
     }
@@ -85,6 +79,8 @@ class OffreController extends Controller
     */
     public function edit(Offre $offre)
     {
+        
+
         $typeContrats = TypeContrat::all();
         $statusOffre = StatutOffre::all();
         return View('entreprise.offre.edit',compact('offre','typeContrats','statusOffre'));

@@ -23,7 +23,7 @@
                   <img src="{{asset('./assets/images/logos/dark-logo.svg')}}" width="180" alt="">
                 </a>
                 <p class="text-center mb-4">Your Social Campaigns</p>
-                <form>
+                <form action="{{route('entreprise.profil.update',3)}}">
                   <div class="mb-5">
                     <label for="avatar" class="form-label">Logo de l'entreprise</label>
                     <input type="file" name=" " class="form-control" id="fileInput"  accept="image/*"/>
