@@ -86,11 +86,15 @@ Route::delete('/roles/destroy/{id}', [RoleController::class, 'destroy'])->name('
 
 //Routes pour les competences
 
-Route::get('/competences', [CompetenceController::class, 'index'])->name('competences.index')->middleware('auth');
-Route::post('/competences/create', [CompetenceController::class, 'store'])->name('competences.store')->middleware('auth');
-Route::get('/competences/edit/{id}', [CompetenceController::class, 'edit'])->name('competences.edit')->middleware('auth');
-Route::patch('/competences/update/{id}', [CompetenceController::class, 'update'])->name('competences.update')->middleware('auth');
-Route::delete('/competences/destroy/{id}', [CompetenceController::class, 'destroy'])->name('competences.destroy')->middleware('auth');
+Route::middleware('role:admin')->group(function (){
+
+    Route::get('/competences', [CompetenceController::class, 'index'])->name('competences.index')->middleware('auth');
+    Route::post('/competences/create', [CompetenceController::class, 'store'])->name('competences.store')->middleware('auth');
+    Route::get('/competences/edit/{id}', [CompetenceController::class, 'edit'])->name('competences.edit')->middleware('auth');
+    Route::patch('/competences/update/{id}', [CompetenceController::class, 'update'])->name('competences.update')->middleware('auth');
+    Route::delete('/competences/destroy/{id}', [CompetenceController::class, 'destroy'])->name('competences.destroy')->middleware('auth');
+
+});
 
 //Routes pour les niveaux
 
@@ -134,7 +138,7 @@ Route::post('/entreprise/offre/edit/{offre}', [OffreController::class,'update'])
 Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule')->middleware('auth');
 Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candidats.postule.store')->middleware('auth');
 
-//Gestion des Entreprises 
+//Gestion des Entreprises
 Route::get('Admin/entreprise/',[EntrepriseAdminController::class,'index'])->name('Admin.entreprise.index')->middleware('auth');
 Route::get('Admin/entreprise/enableAccount/{entreprise}',[EntrepriseAdminController::class,'EnableAccount'])->name('Admin.entreprise.enableAccount')->middleware('auth');
 Route::get('Admin/entreprise/diseableAccount/{entreprise}',[EntrepriseAdminController::class,'DiseableAccount'])->name('Admin.entreprise.DiseableAccount')->middleware('auth');
