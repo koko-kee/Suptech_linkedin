@@ -15,6 +15,16 @@ class Offre extends Model
 
     protected  $guarded = [];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating( function ($offre)
+        {
+            $offre->entreprise()->associates(request()->entreprise);
+        });
+
+    }
     public function  demandes()
     {
         return $this->hasMany(Demande::class);
