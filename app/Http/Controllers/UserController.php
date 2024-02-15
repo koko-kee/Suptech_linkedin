@@ -15,6 +15,12 @@ class UserController extends Controller
 
     }
 
+    public function mesDemandes(){
+
+        $demandes = Demande::where("user_id", "=", auth()->user()->id)->get();
+
+    }
+
 
 
     

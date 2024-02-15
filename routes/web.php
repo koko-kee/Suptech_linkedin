@@ -7,7 +7,8 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\CompetenceController;
 use App\Http\Controllers\Admin\LocaliteController;
 use App\Http\Controllers\Admin\NiveauController;
-use \App\Http\Controllers\PostulerController;
+use App\Http\Controllers\PostulerController;
+use App\Http\Controllers\GestCvController;
 
 use App\Http\Controllers\Entreprise\ProfilController as EntrepriseProfil;
 use App\Http\Controllers\Entreprise\OffreController;
@@ -117,3 +118,11 @@ Route::get('/entreprise/offre/{offre}', [OffreController::class,'show'])->name('
 
 Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule');
 Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candidats.postule.store');
+
+//Routes pour les cvs
+Route::get('/user/cv',[GestCvController::class, 'index'])->name('user.cv');
+Route::get('/user/cv/edit/{id}',[GestCvController::class, 'edit'])->name('user.cv.edit');
+Route::post('/user/cv/create',[GestCvController::class, 'store'])->name('user.cv.store');
+Route::patch('/user/cv/update/{id}',[GestCvController::class, 'update'])->name('user.cv.update');
+Route::delete('/user/cv/destroy/{id}',[GestCvController::class, 'destroy'])->name('user.cv.destroy');
+Route::get('/download/{id}', [GestCvController::class, 'dowmload'])->name('user.cv.download');
