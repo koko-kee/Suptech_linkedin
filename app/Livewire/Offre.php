@@ -8,7 +8,7 @@ use Livewire\Component;
 class Offre extends Component
 {
 
-    public string $search = "" ;
+    public string $search = " " ;
 
 
     public function render()

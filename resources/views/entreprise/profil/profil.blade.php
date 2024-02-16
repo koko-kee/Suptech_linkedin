@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-md-4">
                 <div class="card">
-                  <img src="{{asset('orange.png')}}" class="" width="px" alt="...">
+
+                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 300px;"alt="Avatar" />
                 </div>
                 <div class="text-secondary fs-4">
                     <p>Claye RSX</p>
@@ -18,67 +19,26 @@
                 <h3 class=" offset-4 text-white">Liste des offres</h3>
             </div>
             
-            <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card p-2">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum non, libero nam quas at
-                            que perferendis iure quisquam debitis maior
-                            es maxime?
-                        </p>
-                        <a href="#" class="btn btn-dark">Voir l'offre</a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card p-2">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum non, libero nam quas at
-                            que perferendis iure quisquam debitis maior
-                            es maxime?
-                        </p>
-                        <a href="#" class="btn btn-dark">Voir l'offre</a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card p-2">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum non, libero nam quas at
-                            que perferendis iure quisquam debitis maior
-                            es maxime?
-                        </p>
-                        <a href="#" class="btn btn-dark">Voir l'offre</a>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card p-2">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum non, libero nam quas at
-                            que perferendis iure quisquam debitis maior
-                            es maxime?
-                        </p>
-                        <a href="#" class="btn btn-dark">Voir l'offre</a>
-                    </div>
-                </div> 
-                {{--<div class="col-4 ">
-                    <div class="card p-2">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum non, libero nam quas at
-                            que perferendis iure quisquam debitis maior
-                            es maxime?
-                        </p>
-                    </div>
-                </div>
-                <div class="col-4 ">
-                    <div class="card p-2">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum non, libero nam quas at
-                            que perferendis iure quisquam debitis maior
-                            es maxime?
-                        </p>
-                    </div>
-                </div>--}}
+           <div>
+            @foreach($offres as $offre)
+            <div class="card">
+        <!-- <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="..."> -->
+        <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 50px;"alt="Avatar" />
+                <h5 style="margin-left: 15px" class="card-title">{{ $offre->entreprise->name }}</h5>
             </div>
+            <h1 class="card-title">{{ $offre->libelle}}</h1>
+            <p class="card-text">{{ $offre->created_at->diffForHumans()}}</p>
+            <a href="{{ route('entreprise.offre.show',$offre->id) }}" class="btn btn-primary">Voir l'offre</a>
         </div>
     </div>
-    <div class="row mt-5">
-        <div class="text-center">
-            <p>Statistiques des differentes candidatures durant l'année</p>
+
+            @endforeach
+
+
+           </div>
         </div>
-    </div>
 </div>
 
 @endsection

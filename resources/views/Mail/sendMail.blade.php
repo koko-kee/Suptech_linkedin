@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>OBJET: {{$offre->libelle}}</h1>
+    <h1>claye Malounga</h1>
     
 </body>
 </html>

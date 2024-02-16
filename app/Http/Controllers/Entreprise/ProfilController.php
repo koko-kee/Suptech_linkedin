@@ -13,8 +13,9 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        //Offre::all();
-        return view('entreprise.profil.profil');
+        $offres=Offre::all();
+
+        return view('entreprise.profil.profil', compact('offres'));
     }
 
     /**

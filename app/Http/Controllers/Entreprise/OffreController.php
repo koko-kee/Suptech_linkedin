@@ -5,10 +5,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Offre;
 use App\Models\StatutOffre;
 use App\Models\TypeContrat;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Auth;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class OffreController extends Controller
@@ -68,6 +71,22 @@ class OffreController extends Controller
         'type_contrat_id' => $request->input('type_contrat_id'),
         'entreprise_id' => 1
     ]);
+
+    $users = User::where('email', '<>', 'userE@gmail.com')->get();
+    foreach($users as $user){
+        $userData['email']=$user->email;
+        $userData['sujet']=$request->input('libelle');
+        Mail::send('Mail.sendMail',$userData, function($message) use($userData){ 
+
+       $message->to($userData['email'])
+       ->subject($userData['sujet']);
+            });
+
+            // $this->dispatchBrowserEvent('success', ['message'=>'mail envoye']);
+
+    }
+    
+   
     return redirect()->back()->with('success',"Offre publier");
     }
 
