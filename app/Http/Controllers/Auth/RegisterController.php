@@ -33,6 +33,7 @@ class RegisterController extends Controller
   {
       $credentials = $request->validated();
       $credentials['password'] = Hash::make($credentials['password']);
+      
       $user = User::create($credentials);
 
       if(Session::get('type') == 1)
@@ -73,7 +74,8 @@ class RegisterController extends Controller
         $user->entreprise_id = $entreprise->id;
         $user->save();
         session()->forget(['type', 'user']);
-        return redirect()->route('login')->with('success','votre compte a ete creer');
+        return redirect()->route('login')
+           ->with('success','Un email d\'activation du compte entreprice vous sera envoyer Merci !');
     }
 
 }

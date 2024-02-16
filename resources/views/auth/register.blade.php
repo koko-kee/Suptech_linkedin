@@ -31,6 +31,10 @@ data-sidebar-position="fixed" data-header-position="fixed">
                 <input type="text" value="{{old('name')}}" name="name" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
               </div>
               <div class="mb-3">
+                <label for="exampleInputtext1" class="form-label">Profil</label>
+                <input type="file" value="{{old('profil')}}" name="profil" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+              </div>
+              <div class="mb-3">
                 <label for="exampleInputtext1" class="form-label">Date de Naissance</label>
                 <input type="date" value="{{old('date_naissance')}}" name="date_naissance" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
               </div>

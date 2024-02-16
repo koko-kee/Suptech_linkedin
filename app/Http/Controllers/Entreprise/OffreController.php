@@ -96,7 +96,32 @@ class OffreController extends Controller
      */
     public function update(Request $request, Offre $offre)
     {
-        //
+        $request->validate([
+            'libelle'=> "required",
+            'description'=> "required",
+            'date_limite'=> "required|date",
+            'localisation'=> "required|string",
+            'statut_offre_id'=> "required|exists:statut_offres,id",
+            'type_contrat_id'=> "required|exists:type_contrats,id",
+        ],
+        [
+            'libelle.required' =>"Le libellé ne doit pas etre vide",
+            'description.required' =>"La description ne doit pas etre vide"
+        ]);
+        
+
+        $offre->update([
+            
+            'libelle' => $request->input('libelle'),
+            'description' => $request->input('description'),
+            'localisation' => $request->input('localisation'),
+            'date_limite' => $request->input('date_limite'),
+            'statut_offre_id' => $request->input('statut_offre_id'),
+            'type_contrat_id' => $request->input('type_contrat_id'),
+            'entreprise_id' => 1
+        ]);
+
+        return redirect()->back()->with('success',"Offre Modfier");
     }
 
     /**
