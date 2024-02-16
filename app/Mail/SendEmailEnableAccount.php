@@ -32,7 +32,7 @@ class SendEmailEnableAccount extends Mailable
         return new Envelope(
             from: new Address('SuptechLinkedin@gmail.sn','SuptechLinkedin'),
             to: $this->entreprise->email,
-            subject: 'Activation de compte',
+            subject: 'Activation de  SuptechLinkefin',
         );
     }
 

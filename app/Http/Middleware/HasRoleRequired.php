@@ -15,11 +15,7 @@ class HasRoleRequired
      */
     public function handle(Request $request, Closure $next , String $role): Response
     {
-        if($request->user()->isAdmin())
-        {
-            return $next($request);
-        }
-
+        if($request->user()->isAdmin()) {return $next($request);}
         Abort(403);
 
     }
