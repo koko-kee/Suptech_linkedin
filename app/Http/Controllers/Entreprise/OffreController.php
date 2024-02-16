@@ -18,7 +18,8 @@ class OffreController extends Controller
      */
     public function index()
     {
-        
+        $offres = Offre::all();
+        return view('candidats.index', compact('offres'));
     }
 
     public function MyOffre()
