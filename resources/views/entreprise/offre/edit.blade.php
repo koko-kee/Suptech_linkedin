@@ -8,7 +8,7 @@
 @endif
     <div class="card">
         <div class="card-body">
-            <form  class="form-group" action="{{route('entreprise.offre.store')}}" method="POST">
+            <form  class="form-group" action="{{route('entreprise.offre.update',$offre->id)}}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col">
@@ -69,7 +69,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Soumettre</button>
+                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Editer</button>
                 </div>
             </form>
         </div>

@@ -30,21 +30,26 @@ use App\Http\Controllers\Admin\EntrepriseController as EntrepriseAdminController
 |
 */
 
-Route::get('/index', 'App\Http\Controllers\UserController@index')->name('offres');
+Route::get('/index', 'App\Http\Controllers\UserController@index')->name('offres')->middleware('auth');
 
 // Routes pour le profil candidat
-Route::get('/user/profil',[ProfilController::class,'showProfil'])->name('user.profil.index');
-Route::get('/user/profil/edit',[ProfilController::class,'editProfil'])->name('user.profil.edit');
-Route::post('/user/profil/update',[ProfilController::class,'updateProfil'])->name('user.profil.update');
+Route::get('/user/profil',[ProfilController::class,'showProfil'])->name('user.profil.index')->middleware('auth');
+Route::get('/user/profil/edit',[ProfilController::class,'editProfil'])->name('user.profil.edit')->middleware('auth');
+Route::post('/user/profil/update',[ProfilController::class,'updateProfil'])->name('user.profil.update')->middleware('auth');
 
 
 Route::get('/',function (){
+    if(Auth::check()){
+        return redirect()->back();
+    }
     return redirect()->route('login');
 });
 
 Route::get('/Dashbord',function (){
     return View('dashboard');
-})->name('dash');
+})
+->name('dash')
+->middleware('auth');
 
 
 Route::get('/switch-role/{roleId}', [SwipeRoleController::class,'SwipeRole'])->name('switchRole');
@@ -64,11 +69,11 @@ Route::post('/createCompany',[RegisterController::class,'createCompany'])->name(
 Route::get('/createCompany', [RegisterController::class, 'FormCreateCompany'])->name('FormCreateCompany');
 
 // Routes pour la récupération de mot de passe
-Route::get('/forgetPassword', [ForgetController::class, 'FormForget'])->name('forget');
-Route::post('/SendToken', [ForgetController::class, 'SendToken'])->name('send');
-Route::get('/checkToken/{token}', [ForgetController::class, 'CheckToken'])->name('checkToken');
-Route::get('/reset', [ForgetController::class, 'FormReset'])->name('reset');
-Route::post('/newPassword', [ForgetController::class, 'newPassword'])->name('resetCompleted');
+Route::get('/forgetPassword', [ForgetController::class, 'FormForget'])->name('forget')->middleware('auth');
+Route::post('/SendToken', [ForgetController::class, 'SendToken'])->name('send')->middleware('auth');
+Route::get('/checkToken/{token}', [ForgetController::class, 'CheckToken'])->name('checkToken')->middleware('auth');
+Route::get('/reset', [ForgetController::class, 'FormReset'])->name('reset')->middleware('auth');
+Route::post('/newPassword', [ForgetController::class, 'newPassword'])->name('resetCompleted')->middleware('auth');
 
 // Routes pour les rôles d'administration
 Route::get('/roles', [RoleController::class, 'index'])->name('roles.index')->middleware('auth');
@@ -112,26 +117,26 @@ Route::prefix('localite')
         });
 Route::get('/entreprise', function () {
     return view('entreprise.index');
-});
+})->middleware('auth');
 
 // Route pour l'entreprise offre
 
-Route::get('/entreprise/Nosoffre', [OffreController::class,'MyOffre'])->name('entreprise.offre.Myoffre');
-Route::get('/entreprise/profil', [EntrepriseProfil::class,'index'])->name('entreprise.profil');
-Route::get('/entreprise/profil/edit/{id}', [EntrepriseProfil::class,'edit'])->name('entreprise.profil.edit/{id}');
-Route::get('/entreprise/offre', [OffreController::class,'create'])->name('entreprise.offre');
-Route::post('/entreprise/offre', [OffreController::class,'store'])->name('entreprise.offre.store');
-Route::get('/entreprise/offre/{offre}', [OffreController::class,'show'])->name('entreprise.offre.show');
-Route::get('/entreprise/offre/edit/{offre}', [OffreController::class,'edit'])->name('entreprise.offre.edit');
-Route::post('/entreprise/offre/edit/{offre}', [OffreController::class,'update'])->name('entreprise.offre.update');
+Route::get('/entreprise/Nosoffre', [OffreController::class,'MyOffre'])->name('entreprise.offre.Myoffre')->middleware('auth');
+Route::get('/entreprise/profil', [EntrepriseProfil::class,'index'])->name('entreprise.profil')->middleware('auth');
+Route::get('/entreprise/profil/edit/{id}', [EntrepriseProfil::class,'edit'])->name('entreprise.profil.edit/{id}')->middleware('auth');
+Route::get('/entreprise/offre', [OffreController::class,'create'])->name('entreprise.offre')->middleware('auth');
+Route::post('/entreprise/offre', [OffreController::class,'store'])->name('entreprise.offre.store')->middleware('auth');
+Route::get('/entreprise/offre/{offre}', [OffreController::class,'show'])->name('entreprise.offre.show')->middleware('auth');
+Route::get('/entreprise/offre/edit/{offre}', [OffreController::class,'edit'])->name('entreprise.offre.edit')->middleware('auth');
+Route::post('/entreprise/offre/edit/{offre}', [OffreController::class,'update'])->name('entreprise.offre.update')->middleware('auth');
 
 // Route pour postuler a une offre
-Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule');
-Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candidats.postule.store');
+Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule')->middleware('auth');
+Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candidats.postule.store')->middleware('auth');
 
 //Gestion des Entreprises 
-Route::get('Admin/entreprise/',[EntrepriseAdminController::class,'index'])->name('Admin.entreprise.index');
-Route::get('Admin/entreprise/enableAccount/{entreprise}',[EntrepriseAdminController::class,'EnableAccount'])->name('Admin.entreprise.enableAccount');
-Route::get('Admin/entreprise/diseableAccount/{entreprise}',[EntrepriseAdminController::class,'DiseableAccount'])->name('Admin.entreprise.DiseableAccount');
+Route::get('Admin/entreprise/',[EntrepriseAdminController::class,'index'])->name('Admin.entreprise.index')->middleware('auth');
+Route::get('Admin/entreprise/enableAccount/{entreprise}',[EntrepriseAdminController::class,'EnableAccount'])->name('Admin.entreprise.enableAccount')->middleware('auth');
+Route::get('Admin/entreprise/diseableAccount/{entreprise}',[EntrepriseAdminController::class,'DiseableAccount'])->name('Admin.entreprise.DiseableAccount')->middleware('auth');
 
 

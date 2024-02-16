@@ -14,8 +14,12 @@ class Entreprise extends Model
 
     public function statut() : belongsTo
     {
-
         return $this->belongsTo(Statut::class);
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 
