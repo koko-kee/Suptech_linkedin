@@ -15,16 +15,15 @@ class Offre extends Model
 
     protected  $guarded = [];
 
-    public static function boot()
-    {
-        parent::boot();
-
-        self::creating( function ($offre)
-        {
-            $offre->entreprise()->associates(request()->entreprise);
-        });
-
-    }
+//    public static function boot()
+//    {
+//        parent::boot();
+//
+//        self::creating( function ($offre)
+//        {
+//            $offre->entreprise()->associate(request()->entreprise);
+//        });
+//    }
     public function  demandes()
     {
         return $this->hasMany(Demande::class);

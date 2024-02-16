@@ -19,12 +19,13 @@ class OffreController extends Controller
      */
     public function index()
     {
-        
+        $offres = Offre::orderBy('created_at','desc')->paginate(5);
+        return view('candidats.index', compact('offres'));
     }
 
     public function MyOffre()
     {
-        $myOffre = Offre::where('entreprise_id',FacadesAuth::User()->entreprise_id)->get();
+        $myOffre = Offre::where('entreprise_id',auth()->User()->entreprise_id)->get();
         return View('entreprise.offre.NosOffre',compact('myOffre'));
     }
 
@@ -60,7 +61,7 @@ class OffreController extends Controller
         'date_limite' => $request->input('date_limite'),
         'statut_offre_id' => $request->input('statut_offre_id'),
         'type_contrat_id' => $request->input('type_contrat_id'),
-        //'entreprise_id' => 1
+        'entreprise_id' => $request->user()->entreprise_id
     ]);
     return redirect()->back()->with('success',"Offre publier");
     }
@@ -79,12 +80,10 @@ class OffreController extends Controller
     */
     public function edit(Offre $offre)
     {
-        
-
         $typeContrats = TypeContrat::all();
         $statusOffre = StatutOffre::all();
         return View('entreprise.offre.edit',compact('offre','typeContrats','statusOffre'));
-    } 
+    }
 
     /**
      * Update the specified resource in storage.
@@ -103,17 +102,17 @@ class OffreController extends Controller
             'libelle.required' =>"Le libellé ne doit pas etre vide",
             'description.required' =>"La description ne doit pas etre vide"
         ]);
-        
+
 
         $offre->update([
-            
+
             'libelle' => $request->input('libelle'),
             'description' => $request->input('description'),
             'localisation' => $request->input('localisation'),
             'date_limite' => $request->input('date_limite'),
             'statut_offre_id' => $request->input('statut_offre_id'),
             'type_contrat_id' => $request->input('type_contrat_id'),
-            'entreprise_id' => 1
+            'entreprise_id' => $request->user()->entreprise_id
         ]);
 
         return redirect()->back()->with('success',"Offre Modfier");
