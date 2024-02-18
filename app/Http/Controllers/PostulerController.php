@@ -19,17 +19,17 @@ class PostulerController extends Controller
     public function store(Request $request, int $id){
 
         $request->validate([
-            'cv' => 'required|mimes:pdf|max:2048'
+            'CV' => 'required|mimes:pdf|max:2048'
         ]);
 
-        if ($request->file('cv')) {
-            $fileName = time().'.'.$request->cv->extension();  
-            $request->cv->move(public_path('pdfs'), $fileName);
+        if ($request->file('CV')) {
+            $fileName = time().'.'.$request->CV->extension();
+            $request->CV->move(public_path('pdfs'), $fileName);
             Demande::create ([
                 'offre_id'=>$id,
                 'user_id'=>auth()->user()->id,
                 'cv'=>$fileName
-                
+
             ]);
 
             $offre = Offre::find($id);

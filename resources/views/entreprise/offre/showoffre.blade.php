@@ -8,11 +8,11 @@
     <h1>{{$offre->libelle}}</h1>
     <span class="badge bg-primary mb-3">{{$offre->created_at->diffForHumans()}}</span>
     <span class="badge bg-success mb-3">Statut : {{$offre->contrat?->name}} </span>
-    <hr>
-    @if($offre->entreprise_id != Auth::User()->entreprise->id)
-      <a class="btn btn-danger fw-bold" href="{{route('candidats.postule', $offre->id)}}">Postuler Maintenant</a>
-      <hr>
-    @endif
+    
     {!! Illuminate\Support\Str::markdown($offre->description) !!}
+    <hr>
+      <a class="btn btn-danger fw-bold" href="{{route('candidats.postule', $offre->id)}}">Postuler Maintenant</a>
+    <hr>
+    
 </div>
 @endsection
