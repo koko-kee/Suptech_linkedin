@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cvs', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table){
             $table->id();
-            $table->string('libelle');
-            $table->text('cv');
-            $table->foreignIdFor(\App\Models\User::class);
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cvs');
+        Schema::dropIfExists('permissions');
     }
 };

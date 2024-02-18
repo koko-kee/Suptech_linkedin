@@ -77,6 +77,11 @@ class User extends Authenticatable
          return $this->belongsToMany(Competence::class);
     }
 
+    public function  HasRoles(string $role)
+    {
+        return $this->roles()->where('name',$role);
+    }
+
     public function ManyRoles()
     {
         return $this->roles()
@@ -92,6 +97,5 @@ class User extends Authenticatable
     {
         return $this->roles()->where('name' , '=' , 'admin')->exists();
     }
-
 
 }

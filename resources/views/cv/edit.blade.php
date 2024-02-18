@@ -10,7 +10,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
+              @endif
         <div class="card">
         <div class="card-body">
             <form action="{{route('user.cv.update',$cv->id)}}" method="POST" class="form" enctype="multipart/form-data">
@@ -20,10 +20,10 @@
                 <label for="exampleInputEmail1" class="form-label">CV</label>
                 <input type="file" value="{{$cv->cv}}" name="cv" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
-           
+
             <button type="submit" class="btn btn-primary">Modifier</button>
             </form>
-            
+
         </div>
 </div>
 @endsection

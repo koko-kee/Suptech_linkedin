@@ -17,17 +17,16 @@ class GestCvController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'cv' => 'required|mimes:pdf|max:2048' // Validation pour s'assurer que le fichier est un PDF et de taille maximale 2MB
+            'CV' => 'required|mimes:pdf' // Validation pour s'assurer que le fichier est un PDF et de taille maximale 2MB
         ]);
 
-        if ($request->file('cv')) {
-            $fileName = time().'.'.$request->cv->extension();  
-            $request->cv->move(public_path('cvs'), $fileName);
+        if ($request->file('CV')) {
+            $fileName = time().'.'.$request->CV->extension();
+            $request->CV->move(public_path('cvs'), $fileName);
             CV::create ([
-                'cv'=>$fileName,
+                'libelle' => $request->file('CV')->getClientOriginalName(),
+                'cv'=> $fileName,
                 'user_id'=>auth()->user()->id,
-                
-                
             ]);
 
         }
@@ -50,14 +49,14 @@ class GestCvController extends Controller
 
         if ($request->file('cv')) {
             File::delete(public_path('cvs/'.$cv->cv));
-            $fileName = time().'.'.$request->cv->extension();  
+            $fileName = time().'.'.$request->cv->extension();
             $request->cv->move(public_path('cvs'), $fileName);
             $cv->update ([
                 'cv'=>$fileName
             ]);
         }
-    
-        
+
+
         return redirect()->route('user.cv')->with('success', 'CV modifié avec succès');
     }
     public function destroy(Request $request,$id)

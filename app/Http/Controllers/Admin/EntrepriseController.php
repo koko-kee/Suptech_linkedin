@@ -17,7 +17,7 @@ class EntrepriseController extends Controller
         $entreprises=Entreprise::orderBy('created_at','desc')->paginate(5);
         return View("Admin.entreprise.index",compact('entreprises'));
     }
-    
+
     public function EnableAccount(Entreprise $entreprise)
     {
         DB::beginTransaction();
@@ -28,11 +28,10 @@ class EntrepriseController extends Controller
             DB::commit();
             return redirect()->back()->with('success', 'Le compte a été activé avec succès.');
         } catch (\Exception $e) {
-            DB::rollback();  
+            DB::rollback();
             return redirect()->back()->with('danger', "L'Activation du compte a echouer L'e-mail n'a pas été envoyé. Veuillez réessayer plus tard.");
         }
     }
-
 
     public function DiseableAccount(Entreprise $entreprise)
     {
