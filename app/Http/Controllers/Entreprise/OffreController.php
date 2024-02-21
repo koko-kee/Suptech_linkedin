@@ -23,6 +23,7 @@ class OffreController extends Controller
     public function index()
     {
         $offres = Offre::orderBy('created_at','desc')->paginate(5);
+        $count = Offre::count();
         return view('candidats.index', compact('offres'));
     }
 

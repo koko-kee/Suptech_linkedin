@@ -128,14 +128,14 @@ Route::get('/entreprise', function () {
 
 Route::get('/entreprise/Nosoffre', [OffreController::class,'MyOffre'])->name('entreprise.offre.Myoffre');
 Route::get('/entreprise/profil', [EntrepriseProfil::class,'index'])->name('entreprise.profil');
-Route::get('/entreprise/profil/edit/{id}', [EntrepriseProfil::class,'edit'])->name('entreprise.profil.edit/{id}');
+Route::get('/entreprise/profil/edit/{id}', [EntrepriseProfil::class,'edit'])->name('entreprise.profil.edit');
 Route::get('/entreprise/offre', [OffreController::class,'create'])->name('entreprise.offre');
 Route::post('/entreprise/offre', [OffreController::class,'store'])->name('entreprise.offre.store');
 Route::get('/entreprise/offre/{offre}', [OffreController::class,'show'])->name('entreprise.offre.show');
 Route::get('/entreprise/offre/edit/{offre}', [OffreController::class,'edit'])->name('entreprise.offre.edit');
 Route::post('/entreprise/offre/edit/{offre}', [OffreController::class,'update'])->name('entreprise.offre.update');
 
-Route::post('/entreprise/profil/update/{id}', [ProfilController::class,'update'])->name('entreprise.profil.update');
+Route::post('/entreprise/profil/update/{id}', [EntrepriseProfil::class,'update'])->name('entreprise.profil.update');
 
 // Route pour postuler a une offre
 Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule');

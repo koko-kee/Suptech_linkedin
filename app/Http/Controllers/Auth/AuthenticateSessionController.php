@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\Offre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session; // Ajoutez cette ligne pour importer la classe Session
@@ -38,9 +39,9 @@ class AuthenticateSessionController extends Controller
         }
         $request->session()->regenerate();
         if(Auth::User()->ManyRoles()){
-
+            $count = Offre::count();
            session::put('current_role',(Auth::user()->entreprise->isCompany) ? 'AdminEntreprise' :'candidat');
-           return (Auth::user()->entreprise->isCompany) ? redirect()->route('dash') : redirect()->route('offres');
+           return (Auth::user()->entreprise->isCompany) ? redirect()->route('dash',compact('count')) : redirect()->route('offres');
 
         }else if(Auth::User()->isAdmin()){
             session::put('current_role','admin');

@@ -8,12 +8,11 @@
   <title>Document</title>
 </head>
 <body>
-  
 
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div
-      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      class="position-relative  min-vh-100 d-flex align-items-center justify-content-center">
       <div class="d-flex align-items-center justify-content-center w-100">
         <div class="row justify-content-center w-100">
           <div class="col-md-8 col-lg-6 col-xxl-3">
@@ -23,12 +22,13 @@
                   <img src="{{asset('./assets/images/logos/dark-logo.svg')}}" width="180" alt="">
                 </a>
                 <p class="text-center mb-4">Your Social Campaigns</p>
-                <form action="{{route('entreprise.profil.update', $entreprise->id}}">
+                <form action="{{route('entreprise.profil.update', $entreprise->id)}}" method="POST" enctype="date_format">
                   <div class="mb-5">
+                    @csrf
                     <label for="avatar" class="form-label">Logo de l'entreprise</label>
-                    <input type="file" value="{{ $entreprise->logo}}" name="logo" class="form-control" id="fileInput"  accept="image/*"/>
+                    <input type="file" value="" name="logo" class="form-control" id="fileInput"  accept="image/*"/>
                     <fieldset>
-                   <legend></legend>
+                   <legend> </legend>
                    <img id="imagePreview" src="#" alt="Logo entreprise" width:10px height:10px>
                     </fieldset>
                     <script>

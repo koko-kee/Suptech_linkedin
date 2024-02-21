@@ -16,7 +16,8 @@ class ProfilController extends Controller
     public function index()
     {
         $offres=Offre::all();
-        $entreprise= User::where("entreprise_id", "=", auth()->user()->entreprise_id );
+        $entreprise= User::where("entreprise_id", "=", auth()->user()->entreprise_id)->first();
+        
         return view('entreprise.profil.profil', compact('offres', 'entreprise'));
 
     }
@@ -61,7 +62,9 @@ class ProfilController extends Controller
     {
 
         $entreprise= Entreprise::find($id);
+        //dd($entreprise);
         return  view('entreprise.profil.edit',compact('entreprise'));
+       
         
         //return view('entreprise.profil.edit');
     }
@@ -69,25 +72,27 @@ class ProfilController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProfilRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
+        //dd($request);
         // recuperons les valeurs
         $arrayDonne = [
-            'nom' => $request->nom,
+            'name' => $request->name,
+            'logo' => $request->input('logo')
         ];
-
-        if($request->logo != null)
+    
+        if($request->file('logo'))
         {
-            $logo = $request->logo->store('logoEntreprise');
-            $arrayDonne = array_merge($arrayDonne,
-            [
-                'logo' => $logo
-            ]);
+            $arrayDonne['logo'] = $request->file('logo')->store('logoEntreprise','public');
         }
+
         $profilE = Entreprise::find($id);
-        $profilE->update($arrayDonne);
+        $profilE->logo = $arrayDonne['logo'];
+        $profilE->name = $arrayDonne['name'];
+        $profilE->save();
         return redirect()->route('entreprise.profil')->with('success','information modifiee avec succes');
 
+        
     }
 
     /**

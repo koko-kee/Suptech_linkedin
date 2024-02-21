@@ -21,6 +21,7 @@ class ProfilRequest extends FormRequest
      */
     public function rules(): array
     {
+        $logo = null;
         //Tester si notre route nous permet de faire des modifications
         if (request()->routeIs('entreprise.profil.update')) {
             $logo = 'logo|sometimes';
@@ -28,15 +29,15 @@ class ProfilRequest extends FormRequest
         
         // Validations
         return ([
-            'logo' => $logo,
-            'nom' => 'required',
+            'logo' => 'required',
+            'name' => 'required',
         ]);
     }
     // Tester si dans notre requette nous avons le logo
-    public function prepareForValidation()
-    {
-        if ($this->logo == null) {
-            $this->request->remove('logo');
-        }
-    }
+    // public function prepareForValidation()
+    // {
+    //     if ($this->logo == null) {
+    //         $this->remove('logo');
+    //     }
+    // }
 }

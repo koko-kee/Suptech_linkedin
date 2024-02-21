@@ -34,9 +34,9 @@ public function updateProfil(Request $request)
 
         
     ]);
-    $user = auth()->user();
-    $user->update($request->all());
-    return redirect()->route('user.profil.index')->with("success", "Modifier avec succes");
+//     $user = auth()->user();
+//     $user->update($request->all());
+//     return redirect()->route('user.profil.index')->with("success", "Modifier avec succes");
 }
 
 
