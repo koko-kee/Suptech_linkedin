@@ -71,7 +71,8 @@ class OffreController extends Controller
         'type_contrat_id' => $request->input('type_contrat_id'),
         'entreprise_id' => 1
     ]);
-
+    
+    // Partie d'envoi un mail
     $users = User::where('email', '<>', 'userE@gmail.com')->get();
     foreach($users as $user){
         $userData['email']=$user->email;
