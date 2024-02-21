@@ -12,7 +12,7 @@
    <div class="card">
        <div class="card-body">
             <div class="d-flex align-items-center mb-2 ">
-                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 150px;"alt="Avatar" />
+                <img src="{{ asset(Auth::User()->profil) }}" class="rounded-circle" style="width: 150px;"alt="Avatar" />
                 <h1 style="margin-left: 20px">{{  $user->name }}</h1>
             </div>
        </div>

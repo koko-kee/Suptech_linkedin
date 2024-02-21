@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="row alig n-items-start">
                         <div class="col-8">
-                            <h5 class="card-title mb-9 fw-semibold"> Monthly Earnings </h5>
+                            <h5 class="card-title mb-9 fw-semibold" >Nombre d'offre</h5>
                             <h4 class="fw-semibold mb-3">$6,820</h4>
                             <div class="d-flex align-items-center pb-1">
                                 <span

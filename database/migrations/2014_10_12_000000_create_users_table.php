@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->id();
             $table->string('name');
-            $table->text('profil')->nullable();
+            $table->text('profil')->nullable()->default('/storage/userProfil/avatar.png');
             $table->string('telephone',14)->nullable();
             $table->text('adresse')->nullable();
             $table->date('date_naissance')->nullable();

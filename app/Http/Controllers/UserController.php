@@ -10,12 +10,16 @@ class UserController extends Controller
 {
     public function Index(){
 
-    $offres = Offre::all();
-    return view('candidats.index', compact('offres'));
+        $offres = Offre::orderBy('created_at','desc')->paginate(5);
+        return view('candidats.index', compact('offres'));
+    }
+
+    public function mesDemandes(){
+
+        $demandes = Demande::where("user_id", "=", auth()->user()->id)->get();
 
     }
 
 
 
-     
 }

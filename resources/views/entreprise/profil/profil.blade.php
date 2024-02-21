@@ -5,13 +5,13 @@
         <div class="col-md-4">
                 <div class="card">
 
-                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 300px;"alt="Avatar" />
+                <img src="{{asset($entreprise->entreprise()->logo)}}" class="rounded-circle" style="width: 300px;"alt="Avatar" />
                 </div>
                 <div class="text-secondary fs-4">
-                    <p>Claye RSX</p>
+                    <p>{{$entreprise->entreprise()->name}}</p>
                 </div>
                 <div>
-                   <a href="{{url('entreprise/profil/edit/{9}')}}" class="btn btn-primary w-100 p-1 fs-4 mb-4 rounded-2 fw-bold">Editer</a>
+                   <a href="{{route('entreprise.profil.edit', $entreprise->entreprise_id)}}" class="btn btn-primary w-100 p-1 fs-4 mb-4 rounded-2 fw-bold">Editer</a>
                 </div>
         </div>
         <div class="col-md-7">

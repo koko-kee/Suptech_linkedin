@@ -7,12 +7,23 @@
             {{session('success')}}
             </div>
         @endif
-        <div class="card w-100">
-            <div class="card-body p-4">
-                <h5 class="card-title fw-semibold mb-4">Gestions des entreprises</h5>
-                <div class="table-responsive">
-                    <table class="table text-nowrap mb-0 align-middle">
-                        <thead class="text-dark fs-4">
+        @if(session('danger'))
+        <div class="alert alert-danger" role="alert">
+            {{session('danger')}}
+            </div>
+        @endif
+        <p>
+            <button style="width: 100%;height: 50px" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+               Gestion des activation de compte
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <h5 class="card-title fw-semibold mb-4">Gestions des entreprises</h5>
+                    <div class="table-responsive">
+                        <table class="table text-nowrap mb-0 align-middle">
+                            <thead class="text-dark fs-4">
                             <tr>
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Name</h6>
@@ -20,16 +31,19 @@
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Email</h6>
                                 </th>
-                                 <th class="border-bottom-0">
+                                <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">statut</h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Action</h6>
+                                    <h6 class="fw-semibold mb-0">Action 1</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Action 2</h6>
                                 </th>
                             </tr>
-                            
-                        </thead>
-                        <tbody>
+
+                            </thead>
+                            <tbody>
                             @forelse ($entreprises as $entreprise )
                                 <tr>
                                     <td class="border-bottom-0">
@@ -46,22 +60,27 @@
                                     <td class="border-bottom-0">
                                         <div class="d-flex align-items-center gap-2">
                                             @if ($entreprise->isCompany)
-                                              <a class="badge {{($entreprise->isCompany) ?  'bg-danger' : 'bg-success' }} rounded-3 fw-semibold" href="{{route('Admin.entreprise.DiseableAccount',$entreprise->id)}}">Desactiver le compte</a>
+                                                <a class="badge {{($entreprise->isCompany) ?  'bg-danger' : 'bg-success' }} rounded-3 fw-semibold" href="{{route('Admin.entreprise.DiseableAccount',$entreprise->id)}}">Desactiver le compte</a>
                                             @else
-                                            <a class="badge {{($entreprise->isCompany) ?  'bg-danger' : 'bg-success' }} rounded-3 fw-semibold" href="{{route('Admin.entreprise.enableAccount',$entreprise->id)}}">Activer le compte</a>
-                                            @endif                                            
+                                                <a class="badge {{($entreprise->isCompany) ?  'bg-danger' : 'bg-success' }} rounded-3 fw-semibold" href="{{route('Admin.entreprise.enableAccount',$entreprise->id)}}">Activer le compte</a>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <a class="badge bg-danger rounded-3 fw-semibold" href="{{route('Admin.entreprise.enableAccount',$entreprise->id)}}">Supprimer le compte</a>
                                         </div>
                                     </td>
                                 </tr>
                             @empty
-                                
+
                             @endforelse
-                          
-                        </tbody>
-                    </table>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        {{$entreprises->links()}}
     </div>
 @endsection

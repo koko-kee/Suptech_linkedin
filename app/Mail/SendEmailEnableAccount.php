@@ -2,12 +2,15 @@
 
 namespace App\Mail;
 
+use App\Models\Entreprise;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendEmailEnableAccount extends Mailable
 {
@@ -16,10 +19,10 @@ class SendEmailEnableAccount extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(
+        public Entreprise $entreprise,
+    )
+    {}
 
     /**
      * Get the message envelope.
@@ -27,7 +30,9 @@ class SendEmailEnableAccount extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Send Email Enable Account',
+            from: new Address('SuptechLinkedin@gmail.sn','SuptechLinkedin'),
+            to: $this->entreprise->email,
+            subject: 'Activation de  SuptechLinkefin',
         );
     }
 
@@ -37,7 +42,7 @@ class SendEmailEnableAccount extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'Mail.enableAccount',
         );
     }
 

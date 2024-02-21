@@ -18,7 +18,7 @@ class EntrepriseFactory extends Factory
     {
         return [
             'name' => $this->faker->company(),
-            'logo' => $this->faker->text,
+            'email' => $this->faker->email(),
             'statut_id' => $this->faker->numberBetween(1,3)
         ];
 

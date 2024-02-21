@@ -31,8 +31,8 @@ class sendResetMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Réinitialisation de mot de passe',
             from: new Address('suptech@linkedin.sn','SuptechLinkedin'),
+            subject: 'Réinitialisation de mot de passe',
         );
     }
 

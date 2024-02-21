@@ -23,10 +23,10 @@
                   <img src="{{asset('./assets/images/logos/dark-logo.svg')}}" width="180" alt="">
                 </a>
                 <p class="text-center mb-4">Your Social Campaigns</p>
-                <form>
+                <form action="{{route('entreprise.profil.update', $entreprise->id}}">
                   <div class="mb-5">
                     <label for="avatar" class="form-label">Logo de l'entreprise</label>
-                    <input type="file" name=" " class="form-control" id="fileInput"  accept="image/*"/>
+                    <input type="file" value="{{ $entreprise->logo}}" name="logo" class="form-control" id="fileInput"  accept="image/*"/>
                     <fieldset>
                    <legend></legend>
                    <img id="imagePreview" src="#" alt="Logo entreprise" width:10px height:10px>
@@ -46,7 +46,7 @@
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Nom de l'entreprise</label>
-                    <input type="text" name="nomEntreprise" class="form-control" id="exampleInputPassword1">
+                    <input type="text" name="name" value="{{ $entreprise->name}}" class="form-control" id="exampleInputPassword1">
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
                   </div>

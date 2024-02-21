@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Entreprise;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfilRequest;
 use App\Models\Entreprise;
 use App\Models\Offre;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfilController extends Controller
@@ -14,8 +16,9 @@ class ProfilController extends Controller
     public function index()
     {
         $offres=Offre::all();
+        $entreprise= User::where("entreprise_id", "=", auth()->user()->entreprise_id );
+        return view('entreprise.profil.profil', compact('offres', 'entreprise'));
 
-        return view('entreprise.profil.profil', compact('offres'));
     }
 
     /**
@@ -59,15 +62,32 @@ class ProfilController extends Controller
 
         $entreprise= Entreprise::find($id);
         return  view('entreprise.profil.edit',compact('entreprise'));
+        
         //return view('entreprise.profil.edit');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProfilRequest $request, string $id)
     {
-        //
+        // recuperons les valeurs
+        $arrayDonne = [
+            'nom' => $request->nom,
+        ];
+
+        if($request->logo != null)
+        {
+            $logo = $request->logo->store('logoEntreprise');
+            $arrayDonne = array_merge($arrayDonne,
+            [
+                'logo' => $logo
+            ]);
+        }
+        $profilE = Entreprise::find($id);
+        $profilE->update($arrayDonne);
+        return redirect()->route('entreprise.profil')->with('success','information modifiee avec succes');
+
     }
 
     /**

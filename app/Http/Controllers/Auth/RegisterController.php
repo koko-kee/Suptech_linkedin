@@ -33,6 +33,7 @@ class RegisterController extends Controller
   {
       $credentials = $request->validated();
       $credentials['password'] = Hash::make($credentials['password']);
+      
       $user = User::create($credentials);
 
       if(Session::get('type') == 1)

@@ -17,6 +17,10 @@ class AuthenticateSessionController extends Controller
      */
     public function create()
     {
+        if(Auth::check()){
+        
+            return redirect()->back();
+        }
         return view('auth.login');
     }
 
@@ -29,21 +33,20 @@ class AuthenticateSessionController extends Controller
 
         if (!Auth::attempt($credentials)) {
             throw ValidationException::withMessages([
-                'email' => 'L\'authentification a échoué'
+                'email' => 'Email ou mot de passe incorrect'
             ]);
         }
         $request->session()->regenerate();
-        if(Auth::user()->ManyRoles()){
+        if(Auth::User()->ManyRoles()){
 
-           session::put('current_role','AdminEntreprise');
-           return redirect()->route('dash');
+           session::put('current_role',(Auth::user()->entreprise->isCompany) ? 'AdminEntreprise' :'candidat');
+           return (Auth::user()->entreprise->isCompany) ? redirect()->route('dash') : redirect()->route('offres');
 
-        }else if(Auth::user()->isAdmin()){
-
+        }else if(Auth::User()->isAdmin()){
+            session::put('current_role','admin');
             return redirect()->route('dash');
         }
         else{
-        
             session::put('current_role','candidat');
             return redirect()->route('offres');
         }
