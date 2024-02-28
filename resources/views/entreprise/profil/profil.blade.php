@@ -16,13 +16,25 @@
                 </div>
         </div>
         <div class="col-md-7">
-            <div class="bg-primary w-100 py-14 fs-4 mb-4 rounded-2">
-                <h3 class=" offset-4 text-white">Liste des offres</h3>
+            <div class="bg-light w-100 py-14 fs-4 mb-4 rounded-2">
+                <h3 class=" offset-4 text-black">A propos de nous</h3>
             </div>
-            
+                <div class="card">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quibusdam dolorum eaque ut vero ratione nostrum voluptatibus, doloribus modi hic ipsam maxime?
+                         Autem necessitatibus ad voluptatem qui provident cupiditate dolores?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quibusdam dolorum eaque ut vero ratione nostrum voluptatibus, doloribus modi hic ipsam maxime?
+                         Autem necessitatibus ad voluptatem qui provident cupiditate dolores?</p>
+
+                </div>
+            <!-- <div class="bg-primary w-100 py-14 fs-4 mb-4 rounded-2">
+                <h3 class=" offset-4 text-white">Liste des offres</h3>
+            </div> --> 
+            <div class="card">
+            <a href="#" class="btn btn-light">Voir plus offres</a>
+            </div>
            <div>
             @foreach($offres as $offre)
-            <div class="card">
+            <div class="card"> 
         <!-- <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="..."> -->
         <div class="card-body">
             <div class="d-flex align-items-center mb-2">
@@ -33,6 +45,7 @@
             <p class="card-text">{{ $offre->created_at->diffForHumans()}}</p>
             <a href="{{ route('entreprise.offre.show',$offre->id) }}" class="btn btn-primary">Voir l'offre</a>
         </div>
+        
     </div>
 
             @endforeach
