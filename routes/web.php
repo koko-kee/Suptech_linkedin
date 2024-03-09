@@ -135,8 +135,6 @@ Route::get('/entreprise/offre/{offre}', [OffreController::class,'show'])->name('
 Route::get('/entreprise/offre/edit/{offre}', [OffreController::class,'edit'])->name('entreprise.offre.edit');
 Route::post('/entreprise/offre/edit/{offre}', [OffreController::class,'update'])->name('entreprise.offre.update');
 Route::post('/entreprise/profil/update/{id}', [EntrepriseProfil::class,'update'])->name('entreprise.profil.update');
-
-
 // Route pour postuler a une offre
 Route::get('/postuler/{id}', [PostulerController::class,'showForm'])->name('candidats.postule');
 Route::post('/postuler/{id}', [PostulerController::class,'store'])->name('candidats.postule.store');

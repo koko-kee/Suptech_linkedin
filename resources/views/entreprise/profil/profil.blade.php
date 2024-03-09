@@ -29,9 +29,7 @@
             <!-- <div class="bg-primary w-100 py-14 fs-4 mb-4 rounded-2">
                 <h3 class=" offset-4 text-white">Liste des offres</h3>
             </div> --> 
-            <div class="card">
-            <a href="#" class="btn btn-light">Voir plus offres</a>
-            </div>
+           
            <div>
             @foreach($offres as $offre)
             <div class="card"> 
